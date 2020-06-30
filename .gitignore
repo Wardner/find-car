@@ -1,0 +1,13 @@
+# Created by Wardner Lara.
+node_modules
+coverage
+.env
+dist
+build
+data
+package-lock.json
+
+# Logs
+logs
+*.log
+/*.html
