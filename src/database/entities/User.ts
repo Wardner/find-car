@@ -43,13 +43,13 @@ export class User extends BaseEntity {
   })
   cel: string;
 
-  @Column({
-    name: 'location'
-  })
-  location: {
-    lat: string,
-    lon: string
-  };
+  // @Column({
+  //   name: 'location'
+  // })
+  // location: {
+  //   lat: string,
+  //   lon: string
+  // };
 
   @Column({
     name: 'status'

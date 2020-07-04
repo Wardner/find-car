@@ -1,6 +1,6 @@
 import { Entity, Column, ManyToOne, OneToMany } from 'typeorm';
 import { BaseEntity } from '../baseEntities/BaseEntity';
-import { User } from './user';
+import { User } from './User';
 import { Comment } from './Comment';
 import { Report } from './Report';
 
