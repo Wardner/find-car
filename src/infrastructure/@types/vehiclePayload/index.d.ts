@@ -1,14 +1,12 @@
 declare interface VehiclePayload {
+  id?: number;
   brand?: string;
   model?: string;
   plate?: string;
   niv?: string;
   color?: string;
   year?: number;
-  lostlocation?: {
-    lat: string,
-    lon: string
-  };
+  lostlocation?: object;
   picture?: string;
   description?: string;
   pub_status?: string;

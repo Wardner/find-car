@@ -19,6 +19,11 @@ export class User extends BaseEntity {
   lastname: string;
 
   @Column({
+    name: 'username'
+  })
+  username: string;
+
+  @Column({
     name: 'email',
     unique: true
   })
@@ -52,7 +57,8 @@ export class User extends BaseEntity {
   // };
 
   @Column({
-    name: 'status'
+    name: 'status',
+    default: 'true'
   })
   status: boolean;
 

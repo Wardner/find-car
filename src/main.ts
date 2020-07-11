@@ -10,7 +10,7 @@ export class Main {
   }
 
   public async init() {
-    await this.databaseConnection()
+    await this.databaseConnection().catch((err) => console.log(err))
     this.buildRouting()
   }
 
@@ -18,6 +18,7 @@ export class Main {
     await DatabaseConnection
       .connect().then(connection => 
         console.log(`[DATABASE]: connected to ${connection.options.database} database`))
+        
 
   public buildRouting = () => new Routes(this.router)
 }

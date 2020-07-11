@@ -45,7 +45,8 @@ export class Vehicle extends BaseEntity {
   year: number;
 
   @Column({
-    name: 'lost_location'
+    name: 'lost_location',
+    type: 'simple-json'
   })
   lostlocation: {
     lat: string,
@@ -68,8 +69,8 @@ export class Vehicle extends BaseEntity {
   })
   pub_status: status;
 
-  @ManyToOne(type => User, user => user.vehicle)
-  user: User;
+  @ManyToOne(type => User, user => user.id)
+  user: number;
 
   @OneToMany(type => Comment, comment => comment.vehicle)
   comment: Comment[];

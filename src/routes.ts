@@ -2,10 +2,10 @@ import { Router } from 'express'
 import { BaseRoutes } from './infrastructure/routes/BaseRoutes'
 
 // Modules
-import { adminModule } from './application/admin/modules/AdminModules'
+import { userModule } from './application/user/modules/UserModules';
 
 // Routes
-import { AdminRoutes } from './application/admin/routes/AdminRoutes';
+import { UserRoutes } from './application/user/routes/UserRoutes';
 
 export class Routes {
   constructor(private router: Router) {
@@ -16,6 +16,6 @@ export class Routes {
     this.router.use(moduleRoutes.domain, moduleRoutes.routes)
 
   private build() {
-    this.addRoutes(new AdminRoutes('/admin', adminModule.controller))
+    this.addRoutes(new UserRoutes('/user', userModule.controller))
   }
 }

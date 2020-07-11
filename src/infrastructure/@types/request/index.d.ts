@@ -1,9 +1,8 @@
-import { AdminDTO } from '../../../application/admin/providers/AdminProvider'
-
+import { UserDTO } from '../../../application/user/providers/UserProvider'
 declare global {
   namespace Express {
     export interface Request {
-      admin?: AdminDTO
+      user?: UserDTO
     }
   }
 }

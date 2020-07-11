@@ -1,6 +1,6 @@
 import { Request, Response, RequestHandler } from 'express';
 import { BaseRoutes } from '../../../infrastructure/routes/BaseRoutes';
-import { UserController } from '../providers/UserProvider';
+import { UserController, validators } from '../providers/UserProvider';
 import { statusCodes } from '../../../infrastructure/routes/statusCodes';
 import { RouteMethod } from '../../../infrastructure/routes/RoutesMethods';
 import { ResponseHandler } from '../../../infrastructure/routes/ResponseHandler';
@@ -13,6 +13,7 @@ export class UserRoutes extends BaseRoutes {
 
   addRoutes() {
     this.api.post('/create', this.createUser);
+    this.api.post('/login', validators.login, this.login)
     this.api.put('update', this.updateUser);
     this.api.delete('/delete', this.deleteUser);
     this.api.get('/users', this.getAllUsers);
@@ -61,6 +62,17 @@ export class UserRoutes extends BaseRoutes {
           return res
             .status(statusCodes.OK)
             .send(ResponseHandler.build(deleted, false))
+      }, req, res
+    });
+
+  public login: RequestHandler = (req: Request, res: Response) =>
+    RouteMethod.build({
+      resolve: async() => {
+        const userLogged = await this._UserController.login(req.body);
+        if(userLogged)
+          return res
+            .status(statusCodes.OK)
+            .send(ResponseHandler.build(userLogged, false))
       }, req, res
     });
 }

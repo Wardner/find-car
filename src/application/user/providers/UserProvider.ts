@@ -4,3 +4,5 @@ export { UserService } from '../services/UserService';
 export { UserDTO } from '../domain/dtos/UserDTO';
 export { UserRepository } from '../repositories/UserRepository';
 export { UserController } from '../controllers/UserController';
+export { validators } from '../utils/UserValidators';
+
