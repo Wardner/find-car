@@ -9,6 +9,7 @@ export const UserResponses = {
     TOKEN: 'Token is required',
     ROLE: 'Please, include a valid role.',
     CODE: 'Please, include a valid code',
+    STATUS: 'Please, verify your email',
   },
   USER_NOT_FOUND: 'Oops! We did not find this user in the organization.',
   ACCOUNT_NOT_FOUND: 'Oops! There is no user with these credentials.',

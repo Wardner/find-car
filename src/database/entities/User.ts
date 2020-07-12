@@ -6,6 +6,11 @@ import { Comment } from './Comment';
 import bcrypt from 'bcryptjs'
 import { Report } from './Report';
 
+enum rol {
+  user = 'user',
+  admin = 'admin'
+}
+
 @Entity({ name: 'user' })
 export class User extends BaseEntity {
   @Column({
@@ -36,7 +41,7 @@ export class User extends BaseEntity {
     name: 'dni',
     primary: true
   })
-  dni: string;
+  cedula: string;
 
   @Column({
     name: 'age'
@@ -48,6 +53,12 @@ export class User extends BaseEntity {
   })
   cel: string;
 
+  @Column({
+    name: 'role',
+    default: 'user'
+  })
+  role: rol;
+
   // @Column({
   //   name: 'location'
   // })
@@ -58,7 +69,7 @@ export class User extends BaseEntity {
 
   @Column({
     name: 'status',
-    default: 'true'
+    default: false
   })
   status: boolean;
 

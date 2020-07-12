@@ -4,6 +4,11 @@ import { UserController, validators } from '../providers/UserProvider';
 import { statusCodes } from '../../../infrastructure/routes/statusCodes';
 import { RouteMethod } from '../../../infrastructure/routes/RoutesMethods';
 import { ResponseHandler } from '../../../infrastructure/routes/ResponseHandler';
+import { verifyStatus } from '../../../infrastructure/middleware/VerifyStatus';
+import { verifyRole } from '../../../infrastructure/middleware/VerifyRole';
+import { ensureAuth } from '../../../infrastructure/middleware/AuthMiddle';
+
+
 
 export class UserRoutes extends BaseRoutes {
   constructor(modulePath: string, private _UserController: UserController){
@@ -13,7 +18,7 @@ export class UserRoutes extends BaseRoutes {
 
   addRoutes() {
     this.api.post('/create', this.createUser);
-    this.api.post('/login', validators.login, this.login)
+    this.api.post('/login', ensureAuth, verifyStatus, validators.login, this.login);
     this.api.put('update', this.updateUser);
     this.api.delete('/delete', this.deleteUser);
     this.api.get('/users', this.getAllUsers);

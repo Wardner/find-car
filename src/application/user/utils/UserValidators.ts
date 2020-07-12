@@ -1,7 +1,7 @@
 import { check, param } from 'express-validator';
 import { UserResponses } from './UserResponses';
 // import { getCommonPassword as passwords } from '../../../infrastructure/utils/commonPasswors'
-
+let status: string = 'false';
 
 const { VALIDATOR } = UserResponses
 

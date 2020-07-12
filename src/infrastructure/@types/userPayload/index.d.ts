@@ -4,8 +4,9 @@ declare interface UserPayload {
   username?: string;
   email?: string;
   password?: string;
-  dni?: string;
+  cedula?: string;
   age?: number;
   cel?: string;
+  role?: string;
   status?: boolean;
 }

@@ -21,6 +21,9 @@ export class UserDTO {
 
   @MapProp()
   cel: string;
+
+  @MapProp()
+  role: string;
   
   @MapProp()
   status: boolean;
