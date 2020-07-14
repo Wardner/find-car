@@ -10,4 +10,4 @@ package-lock.json
 # Logs
 logs
 *.log
-/*.html
+/*.htmlsendgrid.env

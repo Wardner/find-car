@@ -1,10 +1,13 @@
 import { UserService, UserDTO } from '../providers/UserProvider';
 import { User } from '../../../database/entities/User';
 import { JWToken } from '../../../infrastructure/utils/JWTokens';
+import { EmailService } from '../../../workers/EmailService/EmailService';
+import { UserResponses } from '../utils/UserResponses';
 
 export class UserController {
   constructor(
-    private _UserService: UserService
+    private _UserService: UserService,
+    private _EmailService: EmailService
   ) {}
 
   public async getById (id: number) {
@@ -28,14 +31,19 @@ export class UserController {
     const userExist = await this._UserService.getUserByUsername(user.username as string);
 
     if(userExist)
-      throw new Error("BAD REQUEST. User Username Exist");
+      throw new Error("BAD REQUEST. Username Exist");
 
     let created = await this._UserService.create(user as User);
 
-    if(created)
-      return await JWToken.generateToken(created);
-
-    throw new Error("No se creo el usuario");
+    if(created){
+      await this._EmailService.build({
+        to: user.email as string,
+        subject: UserResponses.EMAIL_SENT
+      });
+    }
+    
+    return await JWToken.generateToken(created);
+    // throw new Error("No se creo el usuario");
   }
 
   public async update (id: number, updates: {}) {

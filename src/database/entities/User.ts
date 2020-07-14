@@ -59,13 +59,10 @@ export class User extends BaseEntity {
   })
   role: rol;
 
-  // @Column({
-  //   name: 'location'
-  // })
-  // location: {
-  //   lat: string,
-  //   lon: string
-  // };
+  @Column({
+    name: 'token'
+  })
+  token: string;
 
   @Column({
     name: 'status',

@@ -1,5 +1,7 @@
 import { getCustomRepository } from 'typeorm'
 import { UserController, UserMapper, UserRepository, UserService } from '../providers/UserProvider'
+import { EmailService } from '../../../workers/EmailService/EmailService'
+
 
 export class UserModule {
   //Repositories
@@ -10,9 +12,11 @@ export class UserModule {
 
   //Services
   private _userService: UserService
+  private _emailService: EmailService
 
   //Controllers
   private _userController: UserController
+
 
   get userRepository(): UserRepository {
     return !this._userRepository ?
@@ -34,9 +38,14 @@ export class UserModule {
       )) : this._userService
   }
 
+  get emailService(): EmailService {
+    return !this._emailService ?
+      (this._emailService = new EmailService()) : this._emailService
+  }
+
   get controller(): UserController {
     return !this._userController ?
-      (this._userController = new UserController(this.userService))
+      (this._userController = new UserController(this.userService, this.emailService))
     : this._userController
   }
 }

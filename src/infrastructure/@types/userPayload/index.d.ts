@@ -8,5 +8,6 @@ declare interface UserPayload {
   age?: number;
   cel?: string;
   role?: string;
+  token?: string;
   status?: boolean;
 }
