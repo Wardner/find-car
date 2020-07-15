@@ -18,14 +18,20 @@ export class UserRepository extends Repository<User> {
   public deleteUser = async (id: number) => 
     this.manager.getRepository(User).delete({ id });
 
- public getByEmailOrUsername = async (term: string): Promise<User|undefined> => 
+  public getByEmailOrUsername = async (term: string): Promise<User|undefined> => 
   await this.manager.getRepository(User).findOne({
     where: [{ email: term}, { username: term }]
   });
+
+  public getByToken = async(token: string): Promise<User|undefined> =>
+    await this.manager.getRepository(User).findOne({ token });
 
   public getUserWithAccountInfo = async (id: number) =>
     await this.manager.getRepository(User).findOne({
       where: { id },
       relations: ['vehicle']
     })
+
+  public activateAccount = async(user: User, status: boolean) =>
+    this.manager.getRepository(User).merge(user, {status});
 }

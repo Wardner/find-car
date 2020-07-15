@@ -39,7 +39,7 @@ export class UserController {
       await this._EmailService.build({
         to: user.email as string,
         subject: UserResponses.EMAIL_SENT
-      });
+      }, {url: `http://localhost:4000/api/user/activate/${created?.token}`});
     }
     
     return await JWToken.generateToken(created);
@@ -54,6 +54,15 @@ export class UserController {
     }
 
     throw new Error("Usuario no encontrado");
+  }
+
+  public async activate(token: string, status: boolean) {
+    const user = await this._UserService.getUserByToken(token);
+    if(user){
+      let updated = await this._UserService.activateAccount(user, status)
+      return updated;
+    }
+    throw new Error("Crypto no encontrado");
   }
 
   public async delete (id: number) {
@@ -74,8 +83,13 @@ export class UserController {
     throw new Error("Usuario no Encontrado");
   }
 
-  public login = async(user: { emailOrUsername: string, password: string }) =>
-    await this._UserService.login(user.emailOrUsername, user.password)
-      .then(async userLogged => await JWToken.generateToken(userLogged));
+  public login = async(user: { emailOrUsername: string, password: string }) => {
+    const account = await this._UserService.getUserByEmailOrUsername(user.emailOrUsername);
+    if(account?.status){
+      return await this._UserService.login(user.emailOrUsername, user.password)
+        .then(async userLogged => await JWToken.generateToken(userLogged));
+    }
 
+    throw new Error("Revise su correo para activar su cuenta");
+  }
 }

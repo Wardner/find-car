@@ -20,6 +20,13 @@ const verifyEmailWithCode = [
     })
 ]
 
+const convertBoolean = [
+  check('status', VALIDATOR.STATUS)
+    .exists()
+    .toBoolean()
+    .isBoolean()
+]
+
 const signup = [
   ...verifyEmail,
   check('password', VALIDATOR.PASSWORD)
@@ -45,5 +52,6 @@ export const validators = {
   login,
   forgotPassword: [...verifyEmail],
   verifyEmail,
-  verifyEmailWithCode
+  verifyEmailWithCode,
+  convertBoolean
 }

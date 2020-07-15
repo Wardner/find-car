@@ -40,6 +40,9 @@ export class UserService {
     return deleted;
   }
 
+  public getUserByEmailOrUsername = async(emailOrUsername: string) =>
+    await this._UserRepository.getByEmailOrUsername(emailOrUsername);
+
   public async login(emailOrUsername: string, password: string): Promise<UserDTO> {
     const user = await this._UserRepository.getByEmailOrUsername(emailOrUsername);
     if(user && user.id){
@@ -53,6 +56,14 @@ export class UserService {
     }
 
     throw new Error("Bad Request");
+  }
+
+  public getUserByToken = async(token: string) =>
+    await this._UserRepository.getByToken(token);
+
+  public async activateAccount(user: User, status: boolean) {
+    const updated = await this._UserRepository.activateAccount(user, status);
+    return await this._UserRepository.save(updated as User);
   }
 
   // public getUserWithAccountInfo = async (userId: number) =>

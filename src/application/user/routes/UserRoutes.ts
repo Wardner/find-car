@@ -18,10 +18,11 @@ export class UserRoutes extends BaseRoutes {
 
   addRoutes() {
     this.api.post('/create', this.createUser);
-    this.api.post('/login', ensureAuth, verifyStatus, validators.login, this.login);
-    this.api.put('update', this.updateUser);
-    this.api.delete('/delete', this.deleteUser);
+    this.api.post('/login', this.login);
+    this.api.put('update/:id', this.updateUser);
+    this.api.delete('/delete/:id', this.deleteUser);
     this.api.get('/users', this.getAllUsers);
+    this.api.put('/activate/:tokenid', this.changeStatus);
   }
 
   public getAllUsers: RequestHandler = (req: Request, res: Response) =>
@@ -78,6 +79,19 @@ export class UserRoutes extends BaseRoutes {
           return res
             .status(statusCodes.OK)
             .send(ResponseHandler.build(userLogged, false))
+      }, req, res
+    });
+
+  public changeStatus: RequestHandler = (req: Request, res: Response) =>
+    RouteMethod.build({
+      resolve: async() => {
+        let id = req.params?.tokenid.toString();
+        let status = true;
+        const updated = await this._UserController.activate(id, true);
+        if(updated)
+          return res
+            .status(statusCodes.OK)
+            .send(ResponseHandler.build(updated, false))
       }, req, res
     });
 }

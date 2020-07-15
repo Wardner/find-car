@@ -24,6 +24,9 @@ export class UserDTO {
 
   @MapProp()
   role: string;
+
+  @MapProp()
+  token: string;
   
   @MapProp()
   status: boolean;

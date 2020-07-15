@@ -3,6 +3,7 @@ import { BaseEntity } from '../baseEntities/BaseEntity';
 import { Vehicle } from './Vehicle';
 import { Comment } from './Comment';
 
+import crypto from 'crypto'
 import bcrypt from 'bcryptjs'
 import { Report } from './Report';
 
@@ -60,7 +61,8 @@ export class User extends BaseEntity {
   role: rol;
 
   @Column({
-    name: 'token'
+    name: 'token',
+    nullable: true
   })
   token: string;
 
@@ -88,6 +90,13 @@ export class User extends BaseEntity {
 
   comparePassword = async (password: string): Promise<boolean> =>
     bcrypt.compareSync(password, this.password);
+
+  @BeforeInsert()
+  async puToken() {
+    const hash = crypto.randomBytes(25).toString('hex');
+    this.token = hash;
+    return this.token;
+  }
 
 }
 

@@ -37,7 +37,7 @@ export class EmailService {
   public async build(email: {
     to: string,
     subject: string
-  }) {
+  }, data: any) {
     const emailfrom: string = 'wanerlara1999@hotmail.com'; 
     try {
       const { to, subject } = email;
@@ -45,7 +45,7 @@ export class EmailService {
         to: [to, 'wanerlara1999@gmail.com'],
         from: emailfrom,
         subject,
-        html: '<strong>Funcionaaa</strong>'
+        html: `Para activar su cuenta dele click al botón. ${data?.url}`
       }
 
       return await sgMail.send(message);
