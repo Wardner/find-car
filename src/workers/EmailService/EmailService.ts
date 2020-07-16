@@ -42,15 +42,15 @@ export class EmailService {
     try {
       const { to, subject } = email;
       const message = {
-        to: [to, 'wanerlara1999@gmail.com'],
+        to,
         from: emailfrom,
         subject,
-        html: `Para activar su cuenta dele click al botón. ${data?.url}`
+        html: `Para activar su cuenta dele click al boton. ${data?.url}`
       }
 
       return await sgMail.send(message);
     } catch (err) {
-      console.log(`[EMAIL SERVICE]: ${err.mesagge}`);
+      console.log(`[EMAIL SERVICE]: ${err}`);
     }
   };
   

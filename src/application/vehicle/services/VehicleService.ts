@@ -13,9 +13,13 @@ export class VehicleService {
     await this._VehicleMapper.mapToEntity(vehiclePayload);
 
   public async getAllVehicles() {
-    const vehicles =  await this._VehicleRepository.getAll();
+    const vehicles =  await this._VehicleRepository.getAll().then(vehicle =>
+      this._VehicleMapper.mapListToDTO(vehicle));
     return vehicles;
   }
+
+  public getVehicleById = async(id: number) => 
+    await this._VehicleRepository.getById(id);
 
   public create = async(vehicleEntity: Vehicle) => {
     return await this._VehicleRepository.save(vehicleEntity).then(vehicle =>

@@ -3,9 +3,11 @@ import { BaseRoutes } from './infrastructure/routes/BaseRoutes'
 
 // Modules
 import { userModule } from './application/user/modules/UserModules';
+import { vehicleModule } from './application/vehicle/modules/VehicleModule';
 
 // Routes
 import { UserRoutes } from './application/user/routes/UserRoutes';
+import { VehicleRoutes } from './application/vehicle/routes/VehicleRoutes';
 
 export class Routes {
   constructor(private router: Router) {
@@ -17,5 +19,6 @@ export class Routes {
 
   private build() {
     this.addRoutes(new UserRoutes('/user', userModule.controller))
+    this.addRoutes(new VehicleRoutes('/vehicle', vehicleModule.controller))
   }
 }

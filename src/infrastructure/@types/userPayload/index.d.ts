@@ -5,7 +5,6 @@ declare interface UserPayload {
   email?: string;
   password?: string;
   cedula?: string;
-  age?: number;
   cel?: string;
   role?: string;
   token?: string;

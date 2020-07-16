@@ -28,7 +28,7 @@ export class UserController {
 
   public async create (userPayload: UserPayload | any) {
     const user = await this._UserService.mapToEntity(userPayload);
-    const userExist = await this._UserService.getUserByUsername(user.username as string);
+    const userExist = await this._UserService.getUserByEmailOrUsername(user.username as string);
 
     if(userExist)
       throw new Error("BAD REQUEST. Username Exist");
@@ -39,7 +39,7 @@ export class UserController {
       await this._EmailService.build({
         to: user.email as string,
         subject: UserResponses.EMAIL_SENT
-      }, {url: `http://localhost:4000/api/user/activate/${created?.token}`});
+      }, {url: `${created?.token}`});
     }
     
     return await JWToken.generateToken(created);

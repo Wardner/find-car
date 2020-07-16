@@ -29,6 +29,9 @@ export class VehicleDTO {
   };
 
   @MapProp()
+  date: Date;
+
+  @MapProp()
   picture: string;
 
   @MapProp()

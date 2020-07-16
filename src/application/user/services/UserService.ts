@@ -13,7 +13,7 @@ export class UserService {
     await this._UserMapper.mapToEntity(userPayload);
 
   public getUserById = async (id: number) =>
-    this._UserRepository.getById(id);
+    await this._UserRepository.getById(id);
 
   public async getAllUsers () {
     const users = await this._UserRepository.getAll();

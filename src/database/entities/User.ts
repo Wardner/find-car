@@ -45,11 +45,6 @@ export class User extends BaseEntity {
   cedula: string;
 
   @Column({
-    name: 'age'
-  })
-  age: number;
-
-  @Column({
     name: 'cel'
   })
   cel: string;

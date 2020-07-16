@@ -17,9 +17,6 @@ export class UserDTO {
   dni: string;
 
   @MapProp()
-  age: number;
-
-  @MapProp()
   cel: string;
 
   @MapProp()

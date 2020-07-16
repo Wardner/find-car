@@ -13,4 +13,8 @@ export class VehicleMapper {
 
   public mapToEntity = async(from: VehiclePayload): Promise<Vehicle> =>
     this._VehicleRepository.create(from as Vehicle);
+
+  public mapListToDTO(vehicles: Vehicle[]): VehicleDTO[] {
+    return vehicles.map(vehicle => this.mapToDTO(vehicle));
+  }
 }
