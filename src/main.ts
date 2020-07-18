@@ -5,8 +5,8 @@ import { Routes } from './routes'
 export class Main {
   protected router: Router = Router();
 
-  constructor(protected prefixRoute: string, protected app: Application) {
-    this.app.use(this.prefixRoute, this.router)
+  constructor(protected app: Application) {
+    this.app.use(this.router)
   }
 
   public async init() {

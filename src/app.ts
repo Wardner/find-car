@@ -15,10 +15,10 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))
 app.get('/', (req, res) =>
-  res.status(200).send({ msg: 'API Server of Conferences Application' }))
+  res.status(200).send({ msg: 'API Server of FindCar Application' }))
 
 const initialize = () => 
-  new Main(config.server.prefixRoutes as string, app).init()
+  new Main(app).init()
 
 export {
   app,
