@@ -16,14 +16,14 @@ export class VehicleRoutes extends BaseRoutes {
     this.api.post('/create', ensureAuth, this.createVehicle);
     this.api.get('/vehicles', this.getAllVehicles);
     this.api.get('/vehicle/:id', this.getOneVehicle);
-    this.api.put('/update/:id', this.updateVehicle);
-    this.api.delete('/delete/:id', this.deleteVehicle);
+    this.api.put('/update/:id', ensureAuth, this.updateVehicle);
+    this.api.delete('/delete/:id', ensureAuth, this.deleteVehicle);
 
   }
 
   public getAllVehicles: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
-      resolver: async() => {
+      resolve: async() => {
         const vehicles = await this._VehicleController.getAll();
         if(vehicles)
           return res
@@ -34,7 +34,7 @@ export class VehicleRoutes extends BaseRoutes {
 
   public getOneVehicle: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
-      resolver: async() => {
+      resolve: async() => {
         let id = Number(req.params.id);
         const vehicle = await this._VehicleController.getById(id);
         if(vehicle)
@@ -47,8 +47,7 @@ export class VehicleRoutes extends BaseRoutes {
   public createVehicle: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
       resolve: async() => {
-        console.log(req.body);
-        const vehicle = await this._VehicleController.create(req.body);
+        const vehicle = await this._VehicleController.create({user: req.user.id, ...req.body});
         if(vehicle)
           return res
             .status(statusCodes.CREATE)
@@ -60,11 +59,17 @@ export class VehicleRoutes extends BaseRoutes {
     RouteMethod.build({
       resolve: async() => {
         let id = Number(req.params.id);
-        const updated = await this._VehicleController.update(id, req.body);
-        if(updated)
+        if(req.body.user = req.user.id){
+          const updated = await this._VehicleController.update(id, req.body);
+          if(updated)
+            return res
+              .status(statusCodes.OK)
+              .send(ResponseHandler.build(updated, false))
+        } else {
           return res
-            .status(statusCodes.OK)
-            .send(ResponseHandler.build(updated, false))
+            .status(statusCodes.UNAUTHORIZED)
+            .send(ResponseHandler.build('UNAUTHORIZED', true))
+        }
       }, req, res
     });
 
@@ -72,11 +77,17 @@ export class VehicleRoutes extends BaseRoutes {
     RouteMethod.build({
       resolve: async() => {
         let id = Number(req.params.id);
-        const deleted = await this._VehicleController.delete(id);
-        if(deleted)
+        if(req.body.user = req.user.id){
+          const deleted = await this._VehicleController.delete(id);
+          if(deleted)
+            return res
+              .status(statusCodes.OK)
+              .send(ResponseHandler.build(deleted, false))
+        } else {
           return res
-            .status(statusCodes.OK)
-            .send(ResponseHandler.build(deleted, false))
+            .status(statusCodes.UNAUTHORIZED)
+            .send(ResponseHandler.build('UNAUTHORIZED', true))
+        }
       }, req, res
     });
 

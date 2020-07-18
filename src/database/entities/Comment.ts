@@ -11,10 +11,10 @@ export class Comment extends BaseEntity {
   })
   comment_body: string;
 
-  @ManyToOne(type => User, user => user.comment)
-  user: User;
+  @ManyToOne(type => User, user => user.id)
+  user: number;
 
-  @ManyToOne(type => Vehicle, vehicle => vehicle.comment)
-  vehicle: Vehicle;
+  @ManyToOne(type => Vehicle, vehicle => vehicle.id)
+  vehicle: number;
 }
 

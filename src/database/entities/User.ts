@@ -39,8 +39,7 @@ export class User extends BaseEntity {
   password: string;
 
   @Column({
-    name: 'dni',
-    primary: true
+    name: 'dni'
   })
   cedula: string;
 

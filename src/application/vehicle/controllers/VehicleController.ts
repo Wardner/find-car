@@ -16,7 +16,7 @@ export class VehicleController {
 
   public async getById(id: number) {
     const vehicle = await this._VehicleService.getVehicleById(id);
-    if(vehicle)
+    if(!vehicle)
       throw new Error("Vehiculo no encontrado");
 
     return vehicle;
@@ -27,7 +27,7 @@ export class VehicleController {
     const vehicleExist = await this._VehicleService.getVehicleById(vehicle.id as number);
 
     if(vehicleExist)
-      throw new Error("BAD REQUEST. Username Exist");
+      throw new Error("BAD REQUEST. Vehicle Exist");
 
     let created = await this._VehicleService.create(vehicle as Vehicle);
 
