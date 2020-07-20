@@ -60,9 +60,14 @@ export class Vehicle extends BaseEntity {
   date: Date;
 
   @Column({
-    name: 'picture'
+    name: 'picture',
+    nullable: true,
+    type: 'simple-json'
   })
-  picture: string;
+  picture: {
+    url: string,
+    id:string
+  }
 
   @Column({
     name: 'description'

@@ -4,7 +4,6 @@ import { UserController, validators } from '../providers/UserProvider';
 import { statusCodes } from '../../../infrastructure/routes/statusCodes';
 import { RouteMethod } from '../../../infrastructure/routes/RoutesMethods';
 import { ResponseHandler } from '../../../infrastructure/routes/ResponseHandler';
-import { verifyStatus } from '../../../infrastructure/middleware/VerifyStatus';
 import { verifyRole } from '../../../infrastructure/middleware/VerifyRole';
 import { ensureAuth } from '../../../infrastructure/middleware/AuthMiddle';
 

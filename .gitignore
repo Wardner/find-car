@@ -11,3 +11,5 @@ package-lock.json
 logs
 *.log
 /*.htmlsendgrid.env
+
+uploads/

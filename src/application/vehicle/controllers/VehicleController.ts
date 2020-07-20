@@ -58,4 +58,20 @@ export class VehicleController {
     throw new Error("Vehiculo no encontrado");
   }
 
+  public async upload(props: {
+    id: number,
+    picture: {
+      path: string,
+      name: string
+    }
+  }) {
+    const { id, picture } = props;
+    const vehicle = await this._VehicleService.getVehicleById(id);
+    if(vehicle) {
+      return await this._VehicleService.upload(vehicle as Vehicle, picture)
+    }
+
+    throw new Error("UNAUTHORIZED, No esta autorizado a subir fotos en este post");
+  }
+
 }

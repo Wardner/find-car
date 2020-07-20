@@ -11,5 +11,8 @@ export const Configuration = {
   jwt: {
     secret: process.env.SECRET,
     tokenExpire: process.env.TOKEN_EXPIRE,
+  },
+  utils: {
+    uploads: process.env.UPLOADS_USERS || 'uploads',
   }
 }

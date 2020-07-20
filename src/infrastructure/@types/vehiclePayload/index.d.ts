@@ -8,7 +8,7 @@ declare interface VehiclePayload {
   year?: number;
   lostlocation?: object;
   date?: Date;
-  picture?: string;
+  picture?: object;
   description?: string;
   pub_status?: string;
   user?: number;

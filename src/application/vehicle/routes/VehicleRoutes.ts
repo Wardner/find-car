@@ -5,6 +5,9 @@ import { RouteMethod } from '../../../infrastructure/routes/RoutesMethods';
 import { ResponseHandler } from '../../../infrastructure/routes/ResponseHandler';
 import { statusCodes } from '../../../infrastructure/routes/statusCodes';
 import { ensureAuth } from '../../../infrastructure/middleware/AuthMiddle';
+import { UserDTO } from '../../user/domain/dtos/UserDTO';
+import { vehiclePictureMiddle } from '../../../infrastructure/middleware/uploads/VehiclePicture';
+
 
 export class VehicleRoutes extends BaseRoutes {
   constructor(modulePath: string, private _VehicleController: VehicleController){
@@ -18,6 +21,11 @@ export class VehicleRoutes extends BaseRoutes {
     this.api.get('/vehicle/:id', this.getOneVehicle);
     this.api.put('/update/:id', ensureAuth, this.updateVehicle);
     this.api.delete('/delete/:id', ensureAuth, this.deleteVehicle);
+    
+    // Upload Picture
+    this.api.put('/upload/:id', [ensureAuth, vehiclePictureMiddle], this.upload)
+    //  this.api.post('/verify-email', validators.verifyEmail, this.checkEmail)
+    //  this.api.post('/verify-email-code', validators.verifyEmailWithCode, this.verifyEmailWithCode)
 
   }
 
@@ -90,5 +98,26 @@ export class VehicleRoutes extends BaseRoutes {
         }
       }, req, res
     });
+
+  public upload: RequestHandler = (req: Request, res: Response) =>
+    RouteMethod.build({
+      resolve: async () => {
+        console.log(req.file);
+        if (!req.file)
+          throw Error("BAD REQUEST, INVALID FILE")
+
+        const uploaded = await this._VehicleController.upload({
+          id: parseInt(req.params.id),
+          picture: {
+            path: req.file.path,
+            name: req.file.filename
+          }
+        })
+        if(uploaded)
+          return res
+            .status(statusCodes.OK)
+            .send(ResponseHandler.build(uploaded, false))
+      }, req, res
+    })
 
 }

@@ -1,7 +1,9 @@
 import { Vehicle } from '../../../database/entities/Vehicle';
 import { VehicleMapper } from '../domain/mapper/VehicleMapper';
 import { VehicleDTO } from '../domain/dtos/VehicleDTO';
+import { deleteUploadedFiles } from '../../../infrastructure/utils/deleteUploadedFiles';
 import { VehicleRepository } from '../repositories/VehicleRepository';
+import { cloud } from '../../../infrastructure/utils/Cloudinary';
 
 export class VehicleService {
   constructor(
@@ -35,6 +37,38 @@ export class VehicleService {
     let { id } = vehicle;
     const deleted = await this._VehicleRepository.deleteVehicle(id);
     return deleted;
+  }
+
+  public async upload(vehicle: Vehicle, picture: { path: string, name: string }) {
+    if(vehicle) {
+      const uploaded = await cloud.upload(picture.path, {
+        folder: 'vehicles',
+        width: 200,
+        crop: 'limit',
+        format: 'jpg'
+      });
+      
+      if(vehicle.picture && vehicle.picture.id)
+      await cloud.destroy(vehicle.picture.id)
+      
+      const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, {
+        picture: {
+          url: uploaded.secure_url,
+          id: uploaded.public_id
+        }
+      });
+      if(updatePicture) {
+        await this._VehicleRepository.save(updatePicture)
+        await deleteUploadedFiles(picture.name)
+
+        return {
+          picture: updatePicture.picture
+        }
+      }
+    }
+
+    await deleteUploadedFiles(picture.name)
+    throw new Error("User not found, al subir imagenes")
   }
 
 }
