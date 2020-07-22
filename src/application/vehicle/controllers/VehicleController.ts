@@ -60,10 +60,10 @@ export class VehicleController {
 
   public async upload(props: {
     id: number,
-    picture: {
+    picture: [{
       path: string,
       name: string
-    }
+    }]
   }) {
     const { id, picture } = props;
     const vehicle = await this._VehicleService.getVehicleById(id);

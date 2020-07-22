@@ -17,11 +17,11 @@ export class VehicleService {
   public async getAllVehicles() {
     const vehicles =  await this._VehicleRepository.getAll().then(vehicle =>
       this._VehicleMapper.mapListToDTO(vehicle));
-    return vehicles;
-  }
+      return vehicles;
+    }
 
   public getVehicleById = async(id: number) => 
-    await this._VehicleRepository.getById(id);
+  await this._VehicleRepository.getById(id);
 
   public create = async(vehicleEntity: Vehicle) => {
     return await this._VehicleRepository.save(vehicleEntity).then(vehicle =>
@@ -39,36 +39,39 @@ export class VehicleService {
     return deleted;
   }
 
-  public async upload(vehicle: Vehicle, picture: { path: string, name: string }) {
+  public async upload(vehicle: Vehicle, pictures: [{ path: string, name: string }]): Promise<[]> {
     if(vehicle) {
-      const uploaded = await cloud.upload(picture.path, {
+      const uploaded = async(path: string) => cloud.upload(path, {
         folder: 'vehicles',
         width: 200,
         crop: 'limit',
         format: 'jpg'
       });
       
-      if(vehicle.picture && vehicle.picture.id)
-      await cloud.destroy(vehicle.picture.id)
-      
-      const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, {
-        picture: {
-          url: uploaded.secure_url,
-          id: uploaded.public_id
+      pictures.forEach(async picture => {
+        const up = await uploaded(picture.path);
+        const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, {
+          picture: [
+            ...vehicle.picture,
+            {
+              url: up.secure_url,
+            id: up.public_id
+            }
+          ]
+        })
+        
+        if(updatePicture) {
+          await this._VehicleRepository.save(updatePicture)
+          await deleteUploadedFiles(picture.name)
+          
+          return {
+            picture: updatePicture.picture
+          }
         }
-      });
-      if(updatePicture) {
-        await this._VehicleRepository.save(updatePicture)
-        await deleteUploadedFiles(picture.name)
-
-        return {
-          picture: updatePicture.picture
-        }
-      }
+      }) 
     }
-
-    await deleteUploadedFiles(picture.name)
-    throw new Error("Vehicle not found, al subir imagenes")
+    console.log(vehicle);
+    throw new Error("Vehicle not found, al subir imagenes") 
   }
 
 }

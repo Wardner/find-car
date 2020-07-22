@@ -7,7 +7,6 @@ import { statusCodes } from '../../../infrastructure/routes/statusCodes';
 import { ensureAuth } from '../../../infrastructure/middleware/AuthMiddle';
 import { vehiclePictureMiddle } from '../../../infrastructure/middleware/uploads/VehiclePicture';
 
-
 export class VehicleRoutes extends BaseRoutes {
   constructor(modulePath: string, private _VehicleController: VehicleController){
     super(modulePath);
@@ -101,16 +100,18 @@ export class VehicleRoutes extends BaseRoutes {
   public upload: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
       resolve: async () => {
-        console.log(req.file);
-        if (!req.file)
+        console.log(req.files);
+        if (!req.files)
           throw Error("BAD REQUEST, INVALID FILE")
+
+        let variable = req.files as any;
 
         const uploaded = await this._VehicleController.upload({
           id: parseInt(req.params.id),
-          picture: {
-            path: req.file.path,
-            name: req.file.filename
-          }
+          picture: variable.map(file => ({
+            path: file.path,
+            name: file.name
+          }))
         })
         if(uploaded)
           return res
