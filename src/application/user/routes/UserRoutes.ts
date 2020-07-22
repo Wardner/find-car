@@ -43,7 +43,7 @@ export class UserRoutes extends BaseRoutes {
           lastname: req.body.lastname,
           email: req.body.email,
           password: req.body.password,
-          dni: req.body.dni,
+          cedula: req.body.dni,
           cel: req.body.phone
         }
         const user = await this._UserController.create(req.body);
