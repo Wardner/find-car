@@ -12,7 +12,7 @@ const verifyEmail = [
 ]
 
 const emptyCamps = [
-  check(['name', 'lastname', 'cedula', 'cel'], VALIDATOR.NAME)
+  check(['name', 'lastname', 'cedula', 'cel'], VALIDATOR.EMPTY_CAMPS)
     .notEmpty()
     .isLength({
       min: 2

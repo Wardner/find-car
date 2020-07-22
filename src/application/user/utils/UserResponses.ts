@@ -10,6 +10,7 @@ export const UserResponses = {
     ROLE: 'Please, include a valid role.',
     CODE: 'Please, include a valid code',
     STATUS: 'Please, verify your email',
+    EMPTY_CAMPS: 'Complete todos los campos debidamente'
   },
   USER_NOT_FOUND: 'Oops! We did not find this user in the organization.',
   ACCOUNT_NOT_FOUND: 'Oops! There is no user with these credentials.',
@@ -30,5 +31,5 @@ export const UserResponses = {
   INVALID_FILE_EXT: 'Oops! The file or its extension is incorrect.',
   EMAIL_MANY_REQUEST_ATTEMPTS: 'Oops! This email has too many requests, it has been blocked for 24 hours.',
   EMAIL_VERIFY_CODE: 'This code is not valid',
-  EMAIL_NOT_FOUND: 'Oops! We did not find this email.',
+  EMAIL_NOT_FOUND: 'Oops! We did not find this email.'
 }
