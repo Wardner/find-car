@@ -28,7 +28,7 @@ export class UserController {
 
   public async create (userPayload: UserPayload | any) {
     const user = await this._UserService.mapToEntity(userPayload);
-    const userExist = await this._UserService.getUserByEmailOrUsername(user.username as string);
+    const userExist = await this._UserService.getUserByEmail(user.email as string);
 
     if(userExist)
       throw new Error("BAD REQUEST. Username Exist");
@@ -75,18 +75,10 @@ export class UserController {
     throw new Error("Usuario no encontrado");
   }
 
-  public async getUsername(username: string) {
-    const user = await this._UserService.getUserByUsername(username);
-    if(user)
-      return user;
-    
-    throw new Error("Usuario no Encontrado");
-  }
-
-  public login = async(user: { emailOrUsername: string, password: string }) => {
-    const account = await this._UserService.getUserByEmailOrUsername(user.emailOrUsername);
+  public login = async(user: { email: string, password: string }) => {
+    const account = await this._UserService.getUserByEmail(user.email);
     if(account?.status){
-      return await this._UserService.login(user.emailOrUsername, user.password)
+      return await this._UserService.login(user.email, user.password)
         .then(async userLogged => await JWToken.generateToken(userLogged));
     }
 
