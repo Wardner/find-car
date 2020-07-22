@@ -11,6 +11,14 @@ const verifyEmail = [
     .normalizeEmail({ all_lowercase: true })
 ]
 
+const emptyCamps = [
+  check(['name', 'lastname', 'cedula', 'cel'], VALIDATOR.NAME)
+    .notEmpty()
+    .isLength({
+      min: 2
+    })
+]
+
 const verifyEmailWithCode = [
   ...verifyEmail,
   check('code', VALIDATOR.CODE)
@@ -53,5 +61,6 @@ export const validators = {
   forgotPassword: [...verifyEmail],
   verifyEmail,
   verifyEmailWithCode,
-  convertBoolean
+  convertBoolean,
+  emptyCamps
 }

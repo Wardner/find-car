@@ -16,7 +16,7 @@ export class UserRoutes extends BaseRoutes {
   }
 
   addRoutes() {
-    this.api.post('/create', this.createUser);
+    this.api.post('/create', validators.emptyCamps, validators.verifyEmail, this.createUser);
     this.api.post('/login', this.login);
     this.api.put('update/:id', this.updateUser);
     this.api.delete('/delete/:id', this.deleteUser);
