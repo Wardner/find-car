@@ -38,6 +38,14 @@ export class UserRoutes extends BaseRoutes {
   public createUser: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
       resolve: async() => {
+        const users = {
+          name: req.body.name,
+          lastname: req.body.lastname,
+          email: req.body.email,
+          password: req.body.password,
+          dni: req.body.dni,
+          cel: req.body.phone
+        }
         const user = await this._UserController.create(req.body);
         if(user)
           return res
