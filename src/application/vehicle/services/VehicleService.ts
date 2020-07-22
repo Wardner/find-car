@@ -68,7 +68,7 @@ export class VehicleService {
     }
 
     await deleteUploadedFiles(picture.name)
-    throw new Error("User not found, al subir imagenes")
+    throw new Error("Vehicle not found, al subir imagenes")
   }
 
 }

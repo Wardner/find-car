@@ -5,7 +5,6 @@ import { RouteMethod } from '../../../infrastructure/routes/RoutesMethods';
 import { ResponseHandler } from '../../../infrastructure/routes/ResponseHandler';
 import { statusCodes } from '../../../infrastructure/routes/statusCodes';
 import { ensureAuth } from '../../../infrastructure/middleware/AuthMiddle';
-import { UserDTO } from '../../user/domain/dtos/UserDTO';
 import { vehiclePictureMiddle } from '../../../infrastructure/middleware/uploads/VehiclePicture';
 
 
