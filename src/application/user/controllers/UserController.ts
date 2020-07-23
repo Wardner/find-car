@@ -56,10 +56,10 @@ export class UserController {
     throw new Error("Usuario no encontrado");
   }
 
-  public async activate(token: string, status: boolean) {
+  public async activate(token: string, isActive: boolean) {
     const user = await this._UserService.getUserByToken(token);
     if(user){
-      let updated = await this._UserService.activateAccount(user, status)
+      let updated = await this._UserService.activateAccount(user, isActive)
       return updated;
     }
     throw new Error("Crypto no encontrado");
@@ -77,7 +77,7 @@ export class UserController {
 
   public login = async(user: { email: string, password: string }) => {
     const account = await this._UserService.getUserByEmail(user.email);
-    if(account?.status){
+    if(account?.isActive){
       return await this._UserService.login(user.email, user.password)
         .then(async userLogged => await JWToken.generateToken(userLogged));
     }

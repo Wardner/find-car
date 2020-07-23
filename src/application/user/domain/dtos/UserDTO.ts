@@ -26,7 +26,7 @@ export class UserDTO {
   token: string;
   
   @MapProp()
-  status: boolean;
+  isActive: boolean;
 }
 
 

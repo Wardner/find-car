@@ -59,7 +59,7 @@ export class User extends BaseEntity {
     name: 'status',
     default: false
   })
-  status: boolean;
+  isActive: boolean;
 
   @OneToMany(type => Vehicle, vehicle => vehicle.user)
   vehicle: Vehicle[];

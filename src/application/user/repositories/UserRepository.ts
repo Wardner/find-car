@@ -26,6 +26,6 @@ export class UserRepository extends Repository<User> {
   public getUserWithAccountInfo = async (id: number) =>
     await this.manager.getRepository(User).findOne({ id })
 
-  public activateAccount = async(user: User, status: boolean) =>
-    this.manager.getRepository(User).merge(user, {status});
+  public activateAccount = async(user: User, isActive: boolean) =>
+    this.manager.getRepository(User).merge(user, {isActive});
 }

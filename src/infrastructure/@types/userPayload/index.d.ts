@@ -7,5 +7,5 @@ declare interface UserPayload {
   cel?: string;
   role?: string;
   token?: string;
-  status?: boolean;
+  isActive?: boolean;
 }

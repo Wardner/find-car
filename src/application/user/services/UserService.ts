@@ -57,8 +57,8 @@ export class UserService {
   public getUserByToken = async(token: string) =>
     await this._UserRepository.getByToken(token);
 
-  public async activateAccount(user: User, status: boolean) {
-    const updated = await this._UserRepository.activateAccount(user, status);
+  public async activateAccount(user: User, isActive: boolean) {
+    const updated = await this._UserRepository.activateAccount(user, isActive);
     return await this._UserRepository.save(updated as User);
   }
 
