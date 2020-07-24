@@ -45,7 +45,16 @@ export class EmailService {
         to,
         from: emailfrom,
         subject,
-        html: `Para activar su cuenta dele click al boton. ${data?.url}`
+        html:
+        `<p>
+          You're receiving this email because you (or someone else) has
+          requested the reset of a password. If you requested a password reset,
+          click the button below.
+        </p>
+
+          <a href="${data?.url}" class="button" target="_blank">
+          Reset now
+          </a>`
       }
 
       return await sgMail.send(message);

@@ -70,7 +70,6 @@ export class VehicleService {
         }
       }) 
     }
-    console.log(vehicle);
     throw new Error("Vehicle not found, al subir imagenes") 
   }
 

@@ -39,7 +39,7 @@ export class UserController {
       await this._EmailService.build({
         to: user.email as string,
         subject: UserResponses.EMAIL_SENT
-      }, {url: `${created?.token}`});
+      }, {url: `${process.env.URL_FRONT}/${created?.token}`});
     }
     
     return await JWToken.generateToken(created);
