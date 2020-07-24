@@ -17,7 +17,7 @@ export class UserRepository extends Repository<User> {
 
   public getByEmail = async (term: string): Promise<User|undefined> => 
   await this.manager.getRepository(User).findOne({
-    where: [{ email: term}]
+    where: [{ email: term }]
   });
 
   public getByToken = async(token: string): Promise<User|undefined> =>

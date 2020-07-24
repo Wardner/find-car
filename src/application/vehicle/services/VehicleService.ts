@@ -39,7 +39,7 @@ export class VehicleService {
     return deleted;
   }
 
-  public async upload(vehicle: Vehicle, pictures: [{ path: string, name: string }]): Promise<[]> {
+  public async upload(vehicle: Vehicle, pictures: [{ path: string, name: string }]): Promise<Vehicle|undefined> {
     if(vehicle) {
       const uploaded = async(path: string) => cloud.upload(path, {
         folder: 'vehicles',
@@ -52,10 +52,9 @@ export class VehicleService {
         const up = await uploaded(picture.path);
         const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, {
           picture: [
-            ...vehicle.picture,
             {
               url: up.secure_url,
-            id: up.public_id
+              id: up.public_id
             }
           ]
         })
