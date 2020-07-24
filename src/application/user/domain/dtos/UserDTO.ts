@@ -14,7 +14,7 @@ export class UserDTO {
   email: string;
 
   @MapProp()
-  dni: string;
+  cedula: string;
 
   @MapProp()
   cel: string;

@@ -59,8 +59,8 @@ export class UserController {
   public async activate(token: string, isActive: boolean) {
     const user = await this._UserService.getUserByToken(token);
     if(user){
-      let updated = await this._UserService.activateAccount(user, isActive)
-      return updated;
+      let updated = await this._UserService.activateAccount(user, isActive);
+      return JWToken.generateToken(updated);
     }
     throw new Error("Crypto no encontrado");
   }

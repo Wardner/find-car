@@ -52,7 +52,8 @@ export class EmailService {
           click the button below.
         </p>
 
-          <a href="${data?.url}" class="button" target="_blank">
+          <a href="${data?.url}">
+          ${data?.url}
           Reset now
           </a>`
       }

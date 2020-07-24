@@ -67,6 +67,7 @@ export class VehicleController {
   }) {
     const { id, picture } = props;
     const vehicle = await this._VehicleService.getVehicleById(id);
+    console.log(vehicle);
     if(vehicle) {
       return await this._VehicleService.upload(vehicle as Vehicle, picture)
     }
