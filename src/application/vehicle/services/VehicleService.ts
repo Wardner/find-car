@@ -47,11 +47,12 @@ export class VehicleService {
         crop: 'limit',
         format: 'jpg'
       });
-      
-      pictures.forEach(async picture => {
+
+      pictures.map(async picture => {
         const up = await uploaded(picture.path);
         const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, {
           picture: [
+            ...vehicle.picture,
             {
               url: up.secure_url,
               id: up.public_id
@@ -64,12 +65,38 @@ export class VehicleService {
           await deleteUploadedFiles(picture.name)
           
           return {
-            picture: updatePicture.picture
+            updatePicture
           }
         }
-      }) 
+      })
+
     }
+    
     throw new Error("Vehicle not found, al subir imagenes") 
   }
+
+  // public async algo (array: [{path: string, id: string}]){
+  //   const uploaded = async(path: string) => cloud.upload(path, {
+  //     folder: 'vehicles',
+  //     width: 200,
+  //     crop: 'limit',
+  //     format: 'jpg'
+  //   });
+
+  //   var arr: object[] = [];
+
+  //   array.map(async picture => {
+  //     const up = await uploaded(picture.path);
+  //     arr.push({
+  //       path: up.secure_url,
+  //       id: up.public_id
+  //     })
+  //   })
+  //   console.log(arr);
+  //   return arr;
+
+  // }
+
+
 
 }

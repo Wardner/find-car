@@ -6,6 +6,7 @@ import { ResponseHandler } from '../../../infrastructure/routes/ResponseHandler'
 import { statusCodes } from '../../../infrastructure/routes/statusCodes';
 import { ensureAuth } from '../../../infrastructure/middleware/AuthMiddle';
 import { vehiclePictureMiddle } from '../../../infrastructure/middleware/uploads/VehiclePicture';
+import { Vehicle } from '../../../database/entities/Vehicle';
 
 export class VehicleRoutes extends BaseRoutes {
   constructor(modulePath: string, private _VehicleController: VehicleController){
@@ -53,7 +54,7 @@ export class VehicleRoutes extends BaseRoutes {
   public createVehicle: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
       resolve: async() => {
-        const vehicle = await this._VehicleController.create({user: req.user.id, ...req.body});
+        const vehicle = await this._VehicleController.create({user: req.user.id, picture: req.files, ...req.body});
         if(vehicle)
           return res
             .status(statusCodes.CREATE)

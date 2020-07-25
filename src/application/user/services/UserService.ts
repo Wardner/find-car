@@ -41,17 +41,15 @@ export class UserService {
 
   public async login(email: string, password: string): Promise<UserDTO> {
     const user = await this._UserRepository.getByEmail(email);
-    if(user && user.id){
-      if(!user) 
-        throw new Error("Usuario no Encontrado");
-      const matchpassword = user.comparePassword(password);
-      if(!matchpassword)
-        throw new Error("Unauthorized")
-      
-      return this._UserMapper.mapToDTO(user);
-    }
+    if(!user) 
+      throw new Error("Usuario no Encontrado");
 
-    throw new Error("Bad Request");
+    const matchpassword = await user.comparePassword(password);
+
+    if(matchpassword)
+      return this._UserMapper.mapToDTO(user);
+    
+    throw new Error("Unauthorized")
   }
 
   public getUserByToken = async(token: string) =>

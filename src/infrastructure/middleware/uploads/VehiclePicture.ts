@@ -10,4 +10,4 @@ export const vehiclePictureMiddle = multer({
       cb(null, true)
     else cb(null, false)
   }
-}).array('picture');
+}).array('picture', 10);
