@@ -61,7 +61,7 @@ export class User extends BaseEntity {
   })
   isActive: boolean;
 
-  @OneToMany(type => Vehicle, vehicle => vehicle.user)
+  @OneToMany(type => Vehicle, vehicle => vehicle.user, {cascade: true})
   vehicle: Vehicle[];
 
   @OneToMany(type => Comment, comment => comment.user)

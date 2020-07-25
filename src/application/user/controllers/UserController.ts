@@ -38,7 +38,8 @@ export class UserController {
     if(created){
       await this._EmailService.build({
         to: user.email as string,
-        subject: UserResponses.EMAIL_SENT
+        subject: UserResponses.EMAIL_SENT,
+        template: 'verifyEmail'
       }, {url: `${process.env.URL_FRONT}/${created?.token}`});
     }
     
