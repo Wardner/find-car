@@ -1,6 +1,5 @@
 import { Brand, BrandRepository, BrandDTO, BrandMapper } from '../providers/BrandProvider'
 
-
 export class BrandService {
   constructor(
     private _BrandRepository: BrandRepository,

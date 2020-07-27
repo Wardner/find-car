@@ -1,7 +1,7 @@
 import { Mapper } from 'ts-simple-automapper';
 import { Brand } from '../../../../database/entities/Brand';
 import { BrandRepository } from '../../repositories/BrandRepository';
-import { BrandDTO } from '../dtos/brandDTO';
+import { BrandDTO } from '../dtos/BrandDTO';
 
 export class BrandMapper {
   constructor(private _BrandRepository: BrandRepository) {}

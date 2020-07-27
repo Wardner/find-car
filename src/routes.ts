@@ -5,11 +5,13 @@ import { BaseRoutes } from './infrastructure/routes/BaseRoutes'
 import { userModule } from './application/user/modules/UserModules';
 import { vehicleModule } from './application/vehicle/modules/VehicleModule';
 import { brandModule } from './application/brand/modules/BrandModule';
+import { modelModule } from './application/model/modules/ModelModule';
 
 // Routes
 import { UserRoutes } from './application/user/routes/UserRoutes';
 import { VehicleRoutes } from './application/vehicle/routes/VehicleRoutes';
 import { BrandRoutes } from './application/brand/routes/BrandRoutes';
+import { ModelRoutes } from './application/model/routes/ModelRoutes';
 
 export class Routes {
   constructor(private router: Router) {
@@ -23,5 +25,7 @@ export class Routes {
     this.addRoutes(new UserRoutes('/user', userModule.controller))
     this.addRoutes(new VehicleRoutes('/vehicle', vehicleModule.controller))
     this.addRoutes(new BrandRoutes('/brand', brandModule.controller))
+    this.addRoutes(new ModelRoutes('/model', modelModule.controller))
   }
+
 }
