@@ -1,8 +1,10 @@
-import { Entity, Column, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, Column, ManyToOne, OneToMany, JoinColumn, OneToOne } from 'typeorm';
 import { BaseEntity } from '../baseEntities/BaseEntity';
 import { User } from './User';
 import { Comment } from './Comment';
 import { Report } from './Report';
+import { Brand } from './Brand';
+import { Model } from './Model';
 
 enum status {
   blocked = 'blocked',
@@ -12,15 +14,13 @@ enum status {
 
 @Entity({ name: 'vehicle' })
 export class Vehicle extends BaseEntity {
-  @Column({
-    name: 'brand'
-  })
-  brand: string;
+  @OneToOne(type => Brand, brand => brand.id)
+  @JoinColumn()
+  brand: number;
 
-  @Column({
-    name: 'model'
-  })
-  model: string;
+  @OneToOne(type => Model, model => model.id)
+  @JoinColumn()
+  model: number;
 
   @Column({
     name: 'plate',
@@ -46,12 +46,9 @@ export class Vehicle extends BaseEntity {
 
   @Column({
     name: 'lost_location',
-    type: 'simple-json'
+    type: 'string'
   })
-  lostlocation: {
-    lat: string,
-    lon: string
-  };
+  lostlocation: string;
 
   @Column({
     name: 'date',
@@ -62,12 +59,9 @@ export class Vehicle extends BaseEntity {
   @Column({
     name: 'picture',
     nullable: true,
-    type: 'simple-array'
+    type: 'image'
   })
-  picture: [{
-    url: string,
-    id: string
-  }]
+  picture: ImageBitmap;
 
   @Column({
     name: 'description'

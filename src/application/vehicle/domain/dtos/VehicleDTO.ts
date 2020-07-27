@@ -5,10 +5,10 @@ export class VehicleDTO {
   id: number;
 
   @MapProp()
-  brand: string;
+  brand: number;
 
   @MapProp()
-  model: string;
+  model: number;
 
   @MapProp()
   plate: string;
@@ -23,19 +23,13 @@ export class VehicleDTO {
   year: number;
 
   @MapProp()
-  lostlocation: {
-    lat: string,
-    lon: string
-  };
+  lostlocation: string;
 
   @MapProp()
   date: Date;
 
   @MapProp()
-  picture: {
-    url: string,
-    id: string
-  };
+  picture: ImageBitmap;
 
   @MapProp()
   description: string;
