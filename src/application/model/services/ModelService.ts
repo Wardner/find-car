@@ -36,5 +36,8 @@ export class ModelService {
     const deleted = await this._ModelRepository.deleteModel(id);
     return deleted;
   }
+
+  public getAllByBrand = async(id: number) =>
+    await this._ModelRepository.getByBrand(id);
   
 }

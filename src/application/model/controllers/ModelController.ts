@@ -23,6 +23,14 @@ export class ModelController {
     return model;
   }
 
+  public async getByBrand(id: number) {
+    const models = await this._ModelService.getAllByBrand(id);
+    if(!models)
+      throw new Error("No se hallaron modelos para esta marca")
+    
+    return models;
+  }
+
   public async create(modelPayload: ModelPayload | any) {
     const model = await this._ModelService.mapToEntity(modelPayload);
 

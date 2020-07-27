@@ -5,8 +5,7 @@ import { Model } from './Model';
 @Entity({ name: 'brand' })
 export class Brand extends BaseEntity {
   @Column({
-    name: 'name',
-    type: 'string'
+    name: 'name'
   })
   name: string;
 

@@ -45,8 +45,7 @@ export class Vehicle extends BaseEntity {
   year: number;
 
   @Column({
-    name: 'lost_location',
-    type: 'string'
+    name: 'lost_location'
   })
   lostlocation: string;
 
@@ -58,10 +57,9 @@ export class Vehicle extends BaseEntity {
 
   @Column({
     name: 'picture',
-    nullable: true,
-    type: 'image'
+    nullable: true
   })
-  picture: ImageBitmap;
+  picture: string;
 
   @Column({
     name: 'description'

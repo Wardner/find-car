@@ -15,4 +15,7 @@ export class ModelRepository extends Repository<Model> {
   public updateModel = async(model: Model, updates: any): Promise<Model|undefined> =>
     this.manager.getRepository(Model).merge(model, updates);
 
+  public getByBrand = async(id: number): Promise<Model[]> =>
+    await this.manager.getRepository(Model).find({where: [{brand: id}]})
+
 }

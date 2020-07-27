@@ -15,6 +15,7 @@ export class ModelRoutes extends BaseRoutes {
   addRoutes() {
     this.api.get('/getAll', this.getAllModels);
     this.api.get('/getOne/:id', this.getOneModel);
+    this.api.get('/getAll/:id', this.getAllByBrand);
     this.api.post('/create', this.createModel);
     this.api.put('/update/:id', this.updateModel);
     this.api.delete('/delete/:id', this.deleteModel);
@@ -75,6 +76,18 @@ export class ModelRoutes extends BaseRoutes {
           return res
             .status(statusCodes.OK)
             .send(ResponseHandler.build(deleted, false))
+      }, req, res
+    });
+
+  public getAllByBrand: RequestHandler = (req: Request, res: Response) =>
+    RouteMethod.build({
+      resolve: async() => {
+        let id = Number(req.params.id);
+        const models = await this._ModelController.getByBrand(id);
+        if(models)
+          return res
+            .status(statusCodes.OK)
+            .send(ResponseHandler.build(models, false))
       }, req, res
     });
 
