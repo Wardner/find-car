@@ -55,12 +55,12 @@ export class Vehicle extends BaseEntity {
   })
   date: Date;
 
-  @Column({
-    name: 'picture',
-    nullable: true,
-    type: 'simple-array'
-  })
-  picture: string[];
+  // @Column({
+  //   name: 'picture',
+  //   nullable: true,
+  //   type: 'simple-array'
+  // })
+  // picture: string[];
 
   @Column({
     name: 'description'
