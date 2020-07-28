@@ -104,13 +104,19 @@ export class VehicleRoutes extends BaseRoutes {
     RouteMethod.build({
       resolve: async () => {
         // console.log(req.file.filename);
-        let name = req.file.filename;
-        if (!req.file)
+        let files = req.files as any;
+        // let name: string[];
+        // files.map(file => ({
+        //   name: name.push(file.filename)
+        // }))
+        if (!req.files)
           throw Error("BAD REQUEST, INVALID FILE")
 
         const uploaded = await this._VehicleController.upload({
           id: parseInt(req.params.id),
-          picture: [name]
+          picture: files.map(file => ({
+            name: file.filename
+          }))
         })
         if(uploaded)
           return res
