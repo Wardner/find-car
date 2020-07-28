@@ -57,9 +57,10 @@ export class Vehicle extends BaseEntity {
 
   @Column({
     name: 'picture',
-    nullable: true
+    nullable: true,
+    type: 'simple-array'
   })
-  picture: string;
+  picture: string[];
 
   @Column({
     name: 'description'

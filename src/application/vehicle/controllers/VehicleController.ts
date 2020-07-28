@@ -1,5 +1,9 @@
 import { VehicleDTO, VehicleService } from '../providers/VehicleProvider';
 import { Vehicle } from '../../../database/entities/Vehicle';
+import path from 'path';
+import { statusCodes } from 'src/infrastructure/routes/statusCodes';
+import { ResponseHandler } from 'src/infrastructure/routes/ResponseHandler';
+import fs from 'fs';
 
 export class VehicleController {
   constructor(
@@ -60,10 +64,7 @@ export class VehicleController {
 
   public async upload(props: {
     id: number,
-    picture: [{
-      path: string,
-      name: string
-    }]
+    picture: string[]
   }) {
     const { id, picture } = props;
     const vehicle = await this._VehicleService.getVehicleById(id);
@@ -72,6 +73,20 @@ export class VehicleController {
     }
 
     throw new Error("UNAUTHORIZED, No esta autorizado a subir fotos en este post");
+  }
+
+  public async getPic(filename: string) {
+    try {
+      const picture = path.resolve(__dirname, `../../../../uploads/${filename}`)
+      if(fs.existsSync(picture)) {
+        return (path.resolve(picture))
+      }
+      else {
+        throw new Error("No se hallo la imagen")
+      }
+    } catch(e){
+      throw new Error(e.message);
+    }
   }
 
 }

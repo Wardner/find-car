@@ -3,7 +3,6 @@ import { VehicleMapper } from '../domain/mapper/VehicleMapper';
 import { VehicleDTO } from '../domain/dtos/VehicleDTO';
 import { deleteUploadedFiles } from '../../../infrastructure/utils/deleteUploadedFiles';
 import { VehicleRepository } from '../repositories/VehicleRepository';
-import { cloud } from '../../../infrastructure/utils/Cloudinary';
 
 export class VehicleService {
   constructor(
@@ -39,64 +38,23 @@ export class VehicleService {
     return deleted;
   }
 
-  public async upload(vehicle: Vehicle, pictures: [{ path: string, name: string }]): Promise<Vehicle|undefined> {
+  public async upload(vehicle: Vehicle, picture: string[]) {
     if(vehicle) {
-      const uploaded = async(path: string) => cloud.upload(path, {
-        folder: 'vehicles',
-        width: 200,
-        crop: 'limit',
-        format: 'jpg'
-      });
 
-      pictures.map(async picture => {
-        const up = await uploaded(picture.path);
-        const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, {
-          picture: [
-            ...vehicle.picture,
-            {
-              url: up.secure_url,
-              id: up.public_id
-            }
-          ]
-        })
+      const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, {picture})
         
-        if(updatePicture) {
-          await this._VehicleRepository.save(updatePicture)
-          await deleteUploadedFiles(picture.name)
+      if(updatePicture) {
+        await this._VehicleRepository.save(updatePicture)
+        // await deleteUploadedFiles(pictures)
           
-          return {
-            updatePicture
-          }
+        return {
+          updatePicture
         }
-      })
+      }
 
     }
     
     throw new Error("Vehicle not found, al subir imagenes") 
   }
-
-  // public async algo (array: [{path: string, id: string}]){
-  //   const uploaded = async(path: string) => cloud.upload(path, {
-  //     folder: 'vehicles',
-  //     width: 200,
-  //     crop: 'limit',
-  //     format: 'jpg'
-  //   });
-
-  //   var arr: object[] = [];
-
-  //   array.map(async picture => {
-  //     const up = await uploaded(picture.path);
-  //     arr.push({
-  //       path: up.secure_url,
-  //       id: up.public_id
-  //     })
-  //   })
-  //   console.log(arr);
-  //   return arr;
-
-  // }
-
-
 
 }

@@ -7,6 +7,8 @@ import { statusCodes } from '../../../infrastructure/routes/statusCodes';
 import { ensureAuth } from '../../../infrastructure/middleware/AuthMiddle';
 import { vehiclePictureMiddle } from '../../../infrastructure/middleware/uploads/VehiclePicture';
 import { Vehicle } from '../../../database/entities/Vehicle';
+import path from 'path';
+import fs from 'fs';
 
 export class VehicleRoutes extends BaseRoutes {
   constructor(modulePath: string, private _VehicleController: VehicleController){
@@ -22,8 +24,8 @@ export class VehicleRoutes extends BaseRoutes {
     this.api.delete('/delete/:id', ensureAuth, this.deleteVehicle);
     
     // Upload Picture
-    // this.api.put('/upload/:id', [ensureAuth, vehiclePictureMiddle], this.upload)
-    //  this.api.post('/verify-email', validators.verifyEmail, this.checkEmail)
+    this.api.put('/upload/:id', [ensureAuth, vehiclePictureMiddle], this.upload)
+    this.api.get('/picture/:filename', this.getImg)
     //  this.api.post('/verify-email-code', validators.verifyEmailWithCode, this.verifyEmailWithCode)
 
   }
@@ -101,23 +103,40 @@ export class VehicleRoutes extends BaseRoutes {
   public upload: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
       resolve: async () => {
-        console.log(req.files);
-        if (!req.files)
+        // console.log(req.file.filename);
+        let name = req.file.filename;
+        if (!req.file)
           throw Error("BAD REQUEST, INVALID FILE")
-
-        let variable = req.files as any;
 
         const uploaded = await this._VehicleController.upload({
           id: parseInt(req.params.id),
-          picture: variable.map(file => ({
-            path: file.path,
-            name: file.name
-          }))
+          picture: [name]
         })
         if(uploaded)
           return res
             .status(statusCodes.OK)
             .send(ResponseHandler.build(uploaded, false))
+      }, req, res
+    })
+
+  public getImg: RequestHandler = (req: Request, res: Response) =>
+    RouteMethod.build({
+      resolve: async () => {
+        try {
+          const name: string = req.params.filename;
+          const picture = path.resolve(__dirname, `../../../../../uploads/${name}`)
+          if(fs.existsSync(picture))
+            res.sendFile(path.resolve(picture))
+          else {
+            return res
+              .status(statusCodes.NOT_FOUND)
+              .send(ResponseHandler.build('No se hallo la imagen', true))
+          }
+        } catch(e){
+          return res
+            .status(statusCodes.INTERNAL_ERROR)
+            .send(ResponseHandler.build(e.message, true))
+        }
       }, req, res
     })
 
