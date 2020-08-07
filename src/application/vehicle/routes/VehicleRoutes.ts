@@ -6,7 +6,7 @@ import { ResponseHandler } from '../../../infrastructure/routes/ResponseHandler'
 import { statusCodes } from '../../../infrastructure/routes/statusCodes';
 import { ensureAuth } from '../../../infrastructure/middleware/AuthMiddle';
 import { vehiclePictureMiddle } from '../../../infrastructure/middleware/uploads/VehiclePicture';
-import { Vehicle } from '../../../database/entities/Vehicle';
+import { validators } from '../utils/VehicleValidators';
 import path from 'path';
 import fs from 'fs';
 
@@ -17,7 +17,7 @@ export class VehicleRoutes extends BaseRoutes {
   }
 
   addRoutes() {
-    this.api.post('/create', ensureAuth, this.createVehicle);
+    this.api.post('/create', ensureAuth, validators.emptyCamps, this.createVehicle);
     this.api.get('/getall', this.getAllVehicles);
     this.api.get('/vehicle/:id', this.getOneVehicle);
     this.api.put('/update/:id', ensureAuth, this.updateVehicle);
