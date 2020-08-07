@@ -4,7 +4,7 @@ import { Vehicle } from '../../../database/entities/Vehicle';
 @EntityRepository(Vehicle)
 export class VehicleRepository extends Repository<Vehicle> {
   public getAll = async(): Promise<Vehicle[]> =>
-    await this.manager.getRepository(Vehicle).find({select: ["brand", "model", "year", "date"], relations: ["brand", "model"]});
+    await this.manager.getRepository(Vehicle).find({select: ["brand", "model", "year", "date", "lostlocation"], relations: ["brand", "model"]});
 
   public updateVehicle = async(vehicle: Vehicle, updates: any): Promise<Vehicle|undefined> =>
     this.manager.getRepository(Vehicle).merge(vehicle, updates);
