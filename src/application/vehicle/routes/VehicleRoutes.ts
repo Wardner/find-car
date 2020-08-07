@@ -17,7 +17,7 @@ export class VehicleRoutes extends BaseRoutes {
   }
 
   addRoutes() {
-    this.api.post('/create', ensureAuth, validators.emptyCamps, this.createVehicle);
+    this.api.post('/create', ensureAuth, this.createVehicle);
     this.api.get('/getall', this.getAllVehicles);
     this.api.get('/vehicle/:id', this.getOneVehicle);
     this.api.put('/update/:id', ensureAuth, this.updateVehicle);
