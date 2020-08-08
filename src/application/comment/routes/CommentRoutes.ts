@@ -13,14 +13,14 @@ export class CommentRoutes extends BaseRoutes {
   }
 
   addRoutes() {
-    this.api.post('/create', ensureAuth);
+    this.api.post('/create/:id', ensureAuth, this.create);
     this.api.get('/vehicles');
 
   }
 
   public create: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
-      resolve: async() => {
+      resolve: async() => 
         this._CommentController.create({
           comment_body: req.body.content,
           user: req.user.id,
@@ -32,10 +32,7 @@ export class CommentRoutes extends BaseRoutes {
         ),
         req,
         res
-      }})
-
-
-
+      })
       
 }
 
