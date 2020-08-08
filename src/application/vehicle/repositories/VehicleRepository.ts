@@ -4,7 +4,10 @@ import { Vehicle } from '../../../database/entities/Vehicle';
 @EntityRepository(Vehicle)
 export class VehicleRepository extends Repository<Vehicle> {
   public getAll = async(): Promise<Vehicle[]> =>
-    await this.manager.getRepository(Vehicle).find({select: ["brand", "model", "year", "date", "lostlocation"], relations: ["brand", "model"]});
+    await this.manager.getRepository(Vehicle).find({
+      select: ["id", "brand", "model", "year", "date", "lostlocation"],
+      relations: ["brand", "model"]
+    });
 
   public updateVehicle = async(vehicle: Vehicle, updates: any): Promise<Vehicle|undefined> =>
     this.manager.getRepository(Vehicle).merge(vehicle, updates);
@@ -13,5 +16,6 @@ export class VehicleRepository extends Repository<Vehicle> {
     this.manager.getRepository(Vehicle).delete({ id });
 
   public getById = async (id: number): Promise<Vehicle|undefined> =>
-    await this.manager.getRepository(Vehicle).findOne({ id });
+    await this.manager.getRepository(Vehicle)
+      .findOne({where: {id: `${id}`}, relations: ["brand", "model"]});
 }

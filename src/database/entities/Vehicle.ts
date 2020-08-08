@@ -14,11 +14,11 @@ enum status {
 
 @Entity({ name: 'vehicle' })
 export class Vehicle extends BaseEntity {
-  @OneToOne(type => Brand, brand => brand.id)
+  @ManyToOne(type => Brand, brand => brand.id)
   @JoinColumn()
   brand: number;
 
-  @OneToOne(type => Model, model => model.id)
+  @ManyToOne(type => Model, model => model.id)
   @JoinColumn()
   model: number;
 
