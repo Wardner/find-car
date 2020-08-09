@@ -28,10 +28,9 @@ export class VehicleController {
 
   public async create(vehiclePayload: VehiclePayload | any) {
     const vehicle = await this._VehicleService.mapToEntity(vehiclePayload);
-    const vehicleExist = await this._VehicleService.getVehicleById(vehicle.id as number);
-
-    if(vehicleExist)
-      throw new Error("BAD REQUEST. Vehicle Exist");
+    // const vehicleExist = await this._VehicleService.getVehicleById(vehicle.id as number);
+    // if(vehicleExist)
+    //   throw new Error("BAD REQUEST. Vehicle Exist");
 
     let created = await this._VehicleService.create(vehicle as Vehicle);
 

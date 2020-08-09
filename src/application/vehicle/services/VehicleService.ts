@@ -20,7 +20,7 @@ export class VehicleService {
     }
 
   public getVehicleById = async(id: number) => 
-  await this._VehicleRepository.getById(id);
+    this._VehicleRepository.getById(id);
 
   public create = async(vehicleEntity: Vehicle) => {
     return await this._VehicleRepository.save(vehicleEntity).then(vehicle =>
