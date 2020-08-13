@@ -56,7 +56,7 @@ export class VehicleRoutes extends BaseRoutes {
   public createVehicle: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
       resolve: async() => {
-        const vehicle = await this._VehicleController.create({user: req.user.id, ...req.body});
+        const vehicle = await this._VehicleController.create({userId: req.user.id, ...req.body});
         if(vehicle)
           return res
             .status(statusCodes.CREATE)
