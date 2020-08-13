@@ -38,5 +38,5 @@ export class VehicleDTO {
   pub_status: string;
 
   @MapProp()
-  user: number;
+  userId: number;
 }

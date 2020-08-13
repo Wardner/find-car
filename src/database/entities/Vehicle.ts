@@ -76,6 +76,9 @@ export class Vehicle extends BaseEntity {
   @ManyToOne(type => User, user => user.id)
   user: number;
 
+  @Column()
+  userId: number
+
   @OneToMany(type => Comment, comment => comment.vehicle)
   comment: Comment[];
 
