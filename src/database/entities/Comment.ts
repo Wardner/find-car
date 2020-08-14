@@ -11,10 +11,18 @@ export class Comment extends BaseEntity {
   })
   comment_body: string;
 
+  @Column()
+  owner: string
+
+  @Column()
+  email: string
+
+  @Column()
+  cel: string
+
   @ManyToOne(type => User, user => user.id)
   user: number;
 
   @ManyToOne(type => Vehicle, vehicle => vehicle.id)
   vehicle: number;
 }
-

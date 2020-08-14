@@ -8,5 +8,14 @@ export class CommentDTO {
   comment_body: string;
 
   @MapProp()
+  owner: string;
+
+  @MapProp()
+  email: string;
+
+  @MapProp()
+  cel: string;
+
+  @MapProp()
   vehicle: number;
 }

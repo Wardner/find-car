@@ -19,11 +19,8 @@ export class VehicleService {
       return vehicles;
     }
 
-  public getVehicleById = async(id: number) => {
-    let vehicle = await this._VehicleRepository.getById(id);
-    console.log(vehicle);
-    return vehicle;
-  }
+  public getVehicleById = async(id: number) =>
+    this._VehicleRepository.getById(id);
 
   public create = async(vehicleEntity: Vehicle) => {
     return await this._VehicleRepository.save(vehicleEntity).then(vehicle =>

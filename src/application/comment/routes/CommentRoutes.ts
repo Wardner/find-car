@@ -22,6 +22,9 @@ export class CommentRoutes extends BaseRoutes {
         this._CommentController.create({
           comment_body: req.body.content,
           user: req.user.id,
+          owner: req.user.name,
+          email: req.user.email,
+          cel: req.user.cel,
           vehicle: parseInt(req.params.id)
         }).then(comment => 
           res
