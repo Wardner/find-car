@@ -20,5 +20,4 @@ export class VehicleRepository extends Repository<Vehicle> {
       .findOne({select: ["id", "brand", "model", "year", "date", "lostlocation",
       "description", "niv", "color", "pub_status", "plate", "userId", "picture"], 
     where: {id: `${id}`}, relations: ["brand", "model", "comment"]})
-
 }

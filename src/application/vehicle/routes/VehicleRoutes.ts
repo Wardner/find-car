@@ -17,7 +17,7 @@ export class VehicleRoutes extends BaseRoutes {
   }
 
   addRoutes() {
-    this.api.post('/create', ensureAuth, this.createVehicle);
+    this.api.post('/create', [ensureAuth, vehiclePictureMiddle], this.createVehicle);
     this.api.get('/getall', this.getAllVehicles);
     this.api.get('/getone/:id', this.getOneVehicle);
     this.api.put('/update/:id', ensureAuth, this.updateVehicle);
@@ -56,7 +56,14 @@ export class VehicleRoutes extends BaseRoutes {
   public createVehicle: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
       resolve: async() => {
-        const vehicle = await this._VehicleController.create({userId: req.user.id, ...req.body});
+        let files = req.files as any;
+
+        let pictures = files
+          .map(file => "https://fcar.herokuapp.com/vehicle/picture/"+file.filename)
+        
+        const vehicle = await this._VehicleController
+          .create({userId: req.user.id, picture: pictures, ...req.body}); 
+
         if(vehicle)
           return res
             .status(statusCodes.CREATE)
