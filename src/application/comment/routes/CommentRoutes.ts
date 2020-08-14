@@ -14,6 +14,7 @@ export class CommentRoutes extends BaseRoutes {
 
   addRoutes() {
     this.api.post('/create/:id', ensureAuth, this.create);
+    this.api.delete('/delete/:id', ensureAuth, this.delete);
   }
 
   public create: RequestHandler = (req: Request, res: Response) =>
@@ -34,6 +35,24 @@ export class CommentRoutes extends BaseRoutes {
         req,
         res
       })
+
+  public delete: RequestHandler = (req: Request, res: Response) =>
+    RouteMethod.build({
+      resolve: async() => {
+        let id = Number(req.params.id);
+        if(req.body.user = req.user.id){
+          const deleted = await this._CommentController.delete(id);
+          if(deleted)
+            return res
+              .status(statusCodes.OK)
+              .send(ResponseHandler.build(deleted, false))
+        } else {
+          return res
+            .status(statusCodes.UNAUTHORIZED)
+            .send(ResponseHandler.build('UNAUTHORIZED', true))
+        }
+      }, req, res
+    });
       
 }
 
