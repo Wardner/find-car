@@ -68,17 +68,17 @@ export class VehicleRoutes extends BaseRoutes {
     RouteMethod.build({
       resolve: async() => {
         let id = Number(req.params.id);
-        // if(req.body.user = req.user.id){
+        if(req.body.user = req.user.id){
           const updated = await this._VehicleController.update(id, req.body);
           if(updated)
             return res
               .status(statusCodes.OK)
               .send(ResponseHandler.build(updated, false))
-        // } else {
-        //   return res
-        //     .status(statusCodes.UNAUTHORIZED)
-        //     .send(ResponseHandler.build('UNAUTHORIZED', true))
-        // }
+        } else {
+          return res
+            .status(statusCodes.UNAUTHORIZED)
+            .send(ResponseHandler.build('UNAUTHORIZED', true))
+        }
       }, req, res
     });
 
