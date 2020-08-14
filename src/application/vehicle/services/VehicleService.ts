@@ -19,8 +19,11 @@ export class VehicleService {
       return vehicles;
     }
 
-  public getVehicleById = async(id: number) => 
-    this._VehicleRepository.getById(id);
+  public getVehicleById = async(id: number) => {
+    let vehicle = await this._VehicleRepository.getById(id);
+    console.log(vehicle);
+    return vehicle;
+  }
 
   public create = async(vehicleEntity: Vehicle) => {
     return await this._VehicleRepository.save(vehicleEntity).then(vehicle =>
@@ -41,8 +44,7 @@ export class VehicleService {
   public async upload(vehicle: Vehicle, picture: string[]) {
     if(vehicle) {
 
-      const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, {picture})
-        
+      const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, { picture })
       if(updatePicture) {
         await this._VehicleRepository.save(updatePicture)
         // await deleteUploadedFiles(pictures)

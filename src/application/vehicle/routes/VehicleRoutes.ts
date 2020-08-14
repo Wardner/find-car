@@ -103,20 +103,14 @@ export class VehicleRoutes extends BaseRoutes {
   public upload: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
       resolve: async () => {
-        // console.log(req.file.filename);
         let files = req.files as any;
-        // let name: string[];
-        // files.map(file => ({
-        //   name: name.push(file.filename)
-        // }))
+
         if (!req.files)
           throw Error("BAD REQUEST, INVALID FILE")
 
         const uploaded = await this._VehicleController.upload({
           id: parseInt(req.params.id),
-          picture: files.map(file => ({
-            name: file.filename
-          }))
+          picture: files.map(file => "https://fcar.herokuapp.com/vehicle/picture/"+file.filename)
         })
         if(uploaded)
           return res

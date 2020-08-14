@@ -20,6 +20,7 @@ export class VehicleController {
 
   public async getById(id: number) {
     const vehicle = await this._VehicleService.getVehicleById(id);
+    // console.log(vehicle);
     if(!vehicle)
       throw new Error("Vehiculo no encontrado");
 

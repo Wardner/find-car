@@ -14,8 +14,6 @@ export class CommentRoutes extends BaseRoutes {
 
   addRoutes() {
     this.api.post('/create/:id', ensureAuth, this.create);
-    this.api.get('/vehicles');
-
   }
 
   public create: RequestHandler = (req: Request, res: Response) =>
