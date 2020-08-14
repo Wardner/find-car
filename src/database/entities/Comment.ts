@@ -11,13 +11,13 @@ export class Comment extends BaseEntity {
   })
   comment_body: string;
 
-  @Column()
+  @Column({nullable: true})
   owner: string
 
-  @Column()
+  @Column({nullable: true})
   email: string
 
-  @Column()
+  @Column({nullable: true})
   cel: string
 
   @ManyToOne(type => User, user => user.id)
