@@ -56,18 +56,28 @@ export class VehicleRoutes extends BaseRoutes {
   public createVehicle: RequestHandler = (req: Request, res: Response) =>
     RouteMethod.build({
       resolve: async() => {
-        let files = req.files as any;
+        if(req.files){
+          let files = req.files as any;
 
-        let pictures = files
-          .map(file => "https://fcar.herokuapp.com/vehicle/picture/"+file.filename)
-        
-        const vehicle = await this._VehicleController
-          .create({userId: req.user.id, picture: pictures, ...req.body}); 
-
-        if(vehicle)
-          return res
-            .status(statusCodes.CREATE)
-            .send(ResponseHandler.build(vehicle, false))
+          let pictures = files
+            .map(file => "https://fcar.herokuapp.com/vehicle/picture/"+file.filename)
+            
+          const vehicle = await this._VehicleController
+            .create({userId: req.user.id, picture: pictures, ...req.body});
+            
+          if(vehicle)
+            return res
+              .status(statusCodes.CREATE)
+              .send(ResponseHandler.build(vehicle, false))
+        } else {
+          const vehicle = await this._VehicleController
+            .create({userId: req.user.id, picture: null, ...req.body});
+          console.log('object');
+          if(vehicle)
+            return res
+              .status(statusCodes.CREATE)
+              .send(ResponseHandler.build(vehicle, false))
+        }
       }, req, res
     });
 
