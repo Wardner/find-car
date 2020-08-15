@@ -23,6 +23,6 @@ export class Comment extends BaseEntity {
   @ManyToOne(type => User, user => user.id)
   user: number;
 
-  @ManyToOne(type => Vehicle, vehicle => vehicle.id)
+  @ManyToOne(type => Vehicle, vehicle => vehicle.id, {cascade: true, onDelete: "CASCADE"})
   vehicle: number;
 }
