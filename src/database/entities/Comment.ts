@@ -17,7 +17,7 @@ export class Comment extends BaseEntity {
   @Column({nullable: true})
   email: string
 
-  @Column({nullable: true})
+  @Column({nullable: true}) 
   cel: string
 
   @ManyToOne(type => User, user => user.id)

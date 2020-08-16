@@ -51,7 +51,7 @@ export class UserController {
     const user = await this._UserService.getUserById(id);
     if(user){
       let updated = await this._UserService.update(user, updates);
-      return updated;
+      return JWToken.generateToken(updated);
     }
 
     throw new Error("Usuario no encontrado");
