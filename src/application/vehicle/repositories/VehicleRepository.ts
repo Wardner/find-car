@@ -5,7 +5,7 @@ import { Vehicle } from '../../../database/entities/Vehicle';
 export class VehicleRepository extends Repository<Vehicle> {
   public getAll = async(): Promise<Vehicle[]> =>
     await this.manager.getRepository(Vehicle).find({
-      select: ["id", "brand", "model", "year", "date", "lostlocation", "sectorid", "picture"],
+      select: ["id", "brand", "model", "year", "date", "lostlocation", "picture"],
       relations: ["brand", "model"]
     });
 
