@@ -73,12 +73,12 @@ export class Vehicle extends BaseEntity {
   })
   pub_status: status;
 
-  @Column({
-    name: 'sector'
-  })
-  sectorid: number;
+  // @Column({
+  //   name: 'sector'
+  // })
+  // sectorid: number;
 
-  @ManyToOne(type => User, user => user.id)
+  @ManyToOne(type => User, user => user.id, {cascade: true, onDelete: 'CASCADE'})
   user: number;
 
   @Column()
