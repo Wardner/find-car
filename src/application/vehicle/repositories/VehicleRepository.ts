@@ -5,7 +5,7 @@ import { Vehicle } from '../../../database/entities/Vehicle';
 export class VehicleRepository extends Repository<Vehicle> {
   public getAll = async(): Promise<Vehicle[]> =>
     await this.manager.getRepository(Vehicle).find({
-      select: ["id", "brand", "model", "year", "date", "lostlocation", "picture"],
+      select: ["id", "brand", "model", "year", "date", "sectorid", "lostlocation", "picture"],
       relations: ["brand", "model"]
     });
 
@@ -20,5 +20,9 @@ export class VehicleRepository extends Repository<Vehicle> {
       .findOne({select: ["id", "brand", "model", "year", "date", "lostlocation",
       "description", "niv", "color", "pub_status", "plate", "userId", "picture"], 
     where: {id: `${id}`}, relations: ["brand", "model", "comment"]})
+
+  public getByIdC = async (id: number): Promise<Vehicle|undefined> =>
+    await this.manager.getRepository(Vehicle)
+      .findOne(id)
   
 }

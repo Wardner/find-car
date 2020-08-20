@@ -22,13 +22,16 @@ export class VehicleService {
   public getVehicleById = async(id: number) =>
     this._VehicleRepository.getById(id);
 
+  public getVehicleByIdC = async(id: number) =>
+    this._VehicleRepository.getByIdC(id);
+
   public create = async(vehicleEntity: Vehicle) => {
     return await this._VehicleRepository.save(vehicleEntity).then(vehicle =>
       this._VehicleMapper.mapToDTO(vehicle));
   }
 
   public async update (vehicle: Vehicle, updates: {}) {
-    const updated = await this._VehicleRepository.updateVehicle(vehicle, updates);
+    const updated = await this._VehicleRepository.updateVehicle(vehicle, updates)
     return await this._VehicleRepository.save(updated as Vehicle);
   }
 

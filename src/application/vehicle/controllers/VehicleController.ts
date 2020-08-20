@@ -1,17 +1,27 @@
-import { VehicleDTO, VehicleService } from '../providers/VehicleProvider';
+import { VehicleService } from '../providers/VehicleProvider';
 import { Vehicle } from '../../../database/entities/Vehicle';
 import path from 'path';
-import { statusCodes } from 'src/infrastructure/routes/statusCodes';
-import { ResponseHandler } from 'src/infrastructure/routes/ResponseHandler';
 import fs from 'fs';
+import { StadisticRepository } from '../repositories/StadisticRepository';
+import { BrandService } from '../../brand/services/BrandService';
 
 export class VehicleController {
   constructor(
-    private _VehicleService: VehicleService
+    private _VehicleService: VehicleService,
+    private _StadisticRepository: StadisticRepository,
+    private _BrandService: BrandService
   ) {}
 
   public async getAll() {
     const vehicles = await this._VehicleService.getAllVehicles();
+    const sectors = JSON.parse(fs.readFileSync('src/database/sectores.json', 'utf-8'));
+    vehicles.map(vehicle => {
+      const sector = sectors.filter(sector => {
+        return sector.sector_id == vehicle.sectorid;
+      });
+      vehicle.sectorid = sector;
+    })
+    
     if(vehicles)
         return vehicles;
     
@@ -28,11 +38,27 @@ export class VehicleController {
 
   public async create(vehiclePayload: VehiclePayload | any) {
     const vehicle = await this._VehicleService.mapToEntity(vehiclePayload);
-    // const vehicleExist = await this._VehicleService.getVehicleById(vehicle.id as number);
-    // if(vehicleExist)
-    //   throw new Error("BAD REQUEST. Vehicle Exist");
+    // const sectors = JSON.parse(fs.readFileSync('src/database/sectores.json', 'utf-8'));
+    // let sector = sectors.filter(sector => {
+    //   return sector.sector_id == vehicle.sectorid;
+    // });
+
+    // let brand = await this._BrandService.getBrandById(vehicle.brand);
+    
+    // let stadistic = {
+    //   sectorid: sector[0].sector_id,
+    //   sector: sector[0].sector,
+    //   brandid: brand?.id,
+    //   brand: brand?.name
+    // }
 
     let created = await this._VehicleService.create(vehicle as Vehicle);
+    
+    // try{
+    //   await this._StadisticRepository.save(stadistic);
+    // } catch(e) {
+    //   throw new Error(e.message);
+    // }
 
     if(created){
       return created;
@@ -42,10 +68,10 @@ export class VehicleController {
   }
 
   public async update (id: number, updates: {}) {
-    const vehicle = await this._VehicleService.getVehicleById(id);
+    const vehicle = await this._VehicleService.getVehicleByIdC(id);
     if(vehicle){
       let updated = await this._VehicleService.update(vehicle, updates);
-      return updated;
+      return await this._VehicleService.getVehicleById(updated.id);
     }
 
     throw new Error("Vehiculo no encontrado");
@@ -86,6 +112,13 @@ export class VehicleController {
     } catch(e){
       throw new Error(e.message);
     }
+  }
+
+  public async dataCount() {
+    const sectors = await this._StadisticRepository.dataCountSector();
+    const brands = await this._StadisticRepository.dataCountBrand();
+
+    return { sectors, brands };
   }
 
 }
