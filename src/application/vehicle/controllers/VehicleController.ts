@@ -8,8 +8,6 @@ import fs from 'fs';
 export class VehicleController {
   constructor(
     private _VehicleService: VehicleService
-    // private _StadisticRepository: StadisticRepository,
-    // private _BrandService: BrandService
   ) {}
 
   public async getAll() {
