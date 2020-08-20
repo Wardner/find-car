@@ -78,7 +78,7 @@ export class Vehicle extends BaseEntity {
   })
   sectorid: number;
 
-  @ManyToOne(type => User, user => user.id, {cascade: true, onDelete: "CASCADE"})
+  @ManyToOne(type => User, user => user.id)
   user: number;
 
   @Column()
