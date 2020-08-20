@@ -22,7 +22,10 @@ export class VehicleRoutes extends BaseRoutes {
     this.api.get('/getone/:id', this.getOneVehicle);
     this.api.put('/update/:id', ensureAuth, this.updateVehicle);
     this.api.delete('/delete/:id', ensureAuth, this.deleteVehicle);
-    
+    this.api.get('/sector/getall', this.jsonSectors);
+    this.api.get('/sector/getone/:id', this.jsonSector);
+    this.api.get('/stadistics', this.stadistics);
+
     // Upload Picture
     this.api.put('/upload/:id', [ensureAuth, vehiclePictureMiddle], this.upload)
     this.api.get('/picture/:filename', this.getImg)
@@ -72,7 +75,6 @@ export class VehicleRoutes extends BaseRoutes {
         } else {
           const vehicle = await this._VehicleController
             .create({userId: req.user.id, picture: null, ...req.body});
-          console.log('object');
           if(vehicle)
             return res
               .status(statusCodes.CREATE)
@@ -85,7 +87,7 @@ export class VehicleRoutes extends BaseRoutes {
     RouteMethod.build({
       resolve: async() => {
         let id = Number(req.params.id);
-        if(req.body.user = req.user.id){
+        if(req.body.userId = req.user.id){
           const updated = await this._VehicleController.update(id, req.body);
           if(updated)
             return res
@@ -142,8 +144,9 @@ export class VehicleRoutes extends BaseRoutes {
         try {
           const name: string = req.params.filename;
           const picture = path.resolve(__dirname, `../../../../../uploads/${name}`)
-          if(fs.existsSync(picture))
+          if(fs.existsSync(picture)){
             res.sendFile(path.resolve(picture))
+          }
           else {
             return res
               .status(statusCodes.NOT_FOUND)
@@ -157,4 +160,37 @@ export class VehicleRoutes extends BaseRoutes {
       }, req, res
     })
 
+  public jsonSectors: RequestHandler = (req: Request, res: Response) =>
+    RouteMethod.build({
+      resolve: async () => {
+        const sectors = JSON.parse(fs.readFileSync('src/database/sectores.json', 'utf-8'));
+        return res
+          .status(statusCodes.OK)
+          .send(ResponseHandler.build(sectors, false))
+      }, req, res
+    })
+
+  public jsonSector: RequestHandler = (req: Request, res: Response) =>
+    RouteMethod.build({
+      resolve: async () => {
+        const sectors = JSON.parse(fs.readFileSync('src/database/sectores.json', 'utf-8'));
+        const sector = sectors.filter(sector => {
+          return sector.sector_id == req.params.id;
+        });
+        
+        return res
+          .status(statusCodes.OK)
+          .send(ResponseHandler.build(sector, false))
+      }, req, res
+    })
+
+  public stadistics: RequestHandler = (req: Request, res: Response) =>
+    RouteMethod.build({
+      resolve: async () => {
+        const count = await this._VehicleController.dataCount();
+        return res
+          .status(statusCodes.OK)
+          .send(ResponseHandler.build(count, false))
+      }, req, res
+    })
 }
