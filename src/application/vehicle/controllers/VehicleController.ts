@@ -3,13 +3,13 @@ import { Vehicle } from '../../../database/entities/Vehicle';
 import path from 'path';
 import fs from 'fs';
 // import { StadisticRepository } from '../repositories/StadisticRepository';
-import { BrandService } from '../../brand/services/BrandService';
+// import { BrandService } from '../../brand/services/BrandService';
 
 export class VehicleController {
   constructor(
-    private _VehicleService: VehicleService,
+    private _VehicleService: VehicleService
     // private _StadisticRepository: StadisticRepository,
-    private _BrandService: BrandService
+    // private _BrandService: BrandService
   ) {}
 
   public async getAll() {
