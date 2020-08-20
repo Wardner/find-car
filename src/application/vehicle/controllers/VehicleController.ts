@@ -2,25 +2,25 @@ import { VehicleService } from '../providers/VehicleProvider';
 import { Vehicle } from '../../../database/entities/Vehicle';
 import path from 'path';
 import fs from 'fs';
-import { StadisticRepository } from '../repositories/StadisticRepository';
+// import { StadisticRepository } from '../repositories/StadisticRepository';
 import { BrandService } from '../../brand/services/BrandService';
 
 export class VehicleController {
   constructor(
     private _VehicleService: VehicleService,
-    private _StadisticRepository: StadisticRepository,
+    // private _StadisticRepository: StadisticRepository,
     private _BrandService: BrandService
   ) {}
 
   public async getAll() {
     const vehicles = await this._VehicleService.getAllVehicles();
-    const sectors = JSON.parse(fs.readFileSync('src/database/sectores.json', 'utf-8'));
-    vehicles.map(vehicle => {
-      const sector = sectors.filter(sector => {
-        return sector.sector_id == vehicle.sectorid;
-      });
-      vehicle.sectorid = sector;
-    })
+    // const sectors = JSON.parse(fs.readFileSync('src/database/sectores.json', 'utf-8'));
+    // vehicles.map(vehicle => {
+    //   const sector = sectors.filter(sector => {
+    //     return sector.sector_id == vehicle.sectorid;
+    //   });
+    //   vehicle.sectorid = sector;
+    // })
     
     if(vehicles)
         return vehicles;
@@ -38,27 +38,27 @@ export class VehicleController {
 
   public async create(vehiclePayload: VehiclePayload | any) {
     const vehicle = await this._VehicleService.mapToEntity(vehiclePayload);
-    const sectors = JSON.parse(fs.readFileSync('src/database/sectores.json', 'utf-8'));
-    let sector = sectors.filter(sector => {
-      return sector.sector_id == vehicle.sectorid;
-    });
+    // const sectors = JSON.parse(fs.readFileSync('src/database/sectores.json', 'utf-8'));
+    // let sector = sectors.filter(sector => {
+    //   return sector.sector_id == vehicle.sectorid;
+    // });
 
-    let brand = await this._BrandService.getBrandById(vehicle.brand);
+    // let brand = await this._BrandService.getBrandById(vehicle.brand);
     
-    let stadistic = {
-      sectorid: sector[0].sector_id,
-      sector: sector[0].sector,
-      brandid: brand?.id,
-      brand: brand?.name
-    }
+    // let stadistic = {
+    //   sectorid: sector[0].sector_id,
+    //   sector: sector[0].sector,
+    //   brandid: brand?.id,
+    //   brand: brand?.name
+    // }
 
     let created = await this._VehicleService.create(vehicle as Vehicle);
     
-    try{
-      await this._StadisticRepository.save(stadistic);
-    } catch(e) {
-      throw new Error(e.message);
-    }
+    // try{
+    //   await this._StadisticRepository.save(stadistic);
+    // } catch(e) {
+    //   throw new Error(e.message);
+    // }
 
     if(created){
       return created;
@@ -114,11 +114,11 @@ export class VehicleController {
     }
   }
 
-  public async dataCount() {
-    const sectors = await this._StadisticRepository.dataCountSector();
-    const brands = await this._StadisticRepository.dataCountBrand();
+  // public async dataCount() {
+  //   const sectors = await this._StadisticRepository.dataCountSector();
+  //   const brands = await this._StadisticRepository.dataCountBrand();
 
-    return { sectors, brands };
-  }
+  //   return { sectors, brands };
+  // }
 
 }
