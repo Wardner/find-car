@@ -13,7 +13,7 @@ declare interface VehiclePayload {
     id: string
   }[];
   description?: string;
-  sectorid?: number;
+  sectorid?: string;
   pub_status?: string;
   user?: number;
 }
