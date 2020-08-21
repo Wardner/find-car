@@ -1,0 +1,897 @@
+[{
+        "sector_id": 1010101001,
+        "sector": "LOS PERALEJOS"
+    },
+    {
+        "sector_id": 1010101002,
+        "sector": "PALMA REAL"
+    },
+    {
+        "sector_id": 1010101003,
+        "sector": "ARROYO MANZANO"
+    },
+    {
+        "sector_id": 1010101004,
+        "sector": "ALTOS DE ARROYO HONDO"
+    },
+    {
+        "sector_id": 1010101005,
+        "sector": "LOS RIOS"
+    },
+    {
+        "sector_id": 1010101006,
+        "sector": "PUERTO ISABELA"
+    },
+    {
+        "sector_id": 1010101007,
+        "sector": "HONDURAS DEL OESTE"
+    },
+    {
+        "sector_id": 1010101008,
+        "sector": "HONDURAS DEL NORTE"
+    },
+    {
+        "sector_id": 1010101009,
+        "sector": "PASEO DE LOS INDIOS"
+    },
+    {
+        "sector_id": 1010101010,
+        "sector": "LOS CACICAZGOS"
+    },
+    {
+        "sector_id": 1010101011,
+        "sector": "RENACIMIENTO"
+    },
+    {
+        "sector_id": 1010101012,
+        "sector": "LOS RESTAURADORES"
+    },
+    {
+        "sector_id": 1010101013,
+        "sector": "SAN GERONIMO"
+    },
+    {
+        "sector_id": 1010101014,
+        "sector": "LOS JARDINES"
+    },
+    {
+        "sector_id": 1010101015,
+        "sector": "JARDIN BOTANICO"
+    },
+    {
+        "sector_id": 1010101016,
+        "sector": "NUEVO ARROYO HONDO"
+    },
+    {
+        "sector_id": 1010101017,
+        "sector": "CERROS DE ARROYO HONDO"
+    },
+    {
+        "sector_id": 1010101018,
+        "sector": "VIEJO ARROYO HONDO"
+    },
+    {
+        "sector_id": 1010101019,
+        "sector": "PARAISO"
+    },
+    {
+        "sector_id": 1010101020,
+        "sector": "JULIETA MORALES"
+    },
+    {
+        "sector_id": 1010101021,
+        "sector": "LOS PRADOS"
+    },
+    {
+        "sector_id": 1010101022,
+        "sector": "EL MILLON"
+    },
+    {
+        "sector_id": 1010101023,
+        "sector": "MIRADOR NORTE"
+    },
+    {
+        "sector_id": 1010101024,
+        "sector": "MIRADOR SUR"
+    },
+    {
+        "sector_id": 1010101025,
+        "sector": "BUENOS AIRES (INDEPENDENCIA)"
+    },
+    {
+        "sector_id": 1010101026,
+        "sector": "MIRAMAR"
+    },
+    {
+        "sector_id": 1010101027,
+        "sector": "TROPICAL METALDOM"
+    },
+    {
+        "sector_id": 1010101028,
+        "sector": "JARDINES DEL SUR"
+    },
+    {
+        "sector_id": 1010101029,
+        "sector": "ATALA"
+    },
+    {
+        "sector_id": 1010101030,
+        "sector": "BELLA VISTA"
+    },
+    {
+        "sector_id": 1010101031,
+        "sector": "ENSANCHE QUISQUEYA"
+    },
+    {
+        "sector_id": 1010101032,
+        "sector": "PIANTINI"
+    },
+    {
+        "sector_id": 1010101033,
+        "sector": "LA JULIA"
+    },
+    {
+        "sector_id": 1010101034,
+        "sector": "NUESTRA SEÑORA DE LA PAZ"
+    },
+    {
+        "sector_id": 1010101035,
+        "sector": "GENERAL ANTONIO DUVERGE"
+    },
+    {
+        "sector_id": 1010101036,
+        "sector": "30 DE MAYO"
+    },
+    {
+        "sector_id": 1010101037,
+        "sector": "CACIQUE"
+    },
+    {
+        "sector_id": 1010101038,
+        "sector": "CENTRO DE LOS HEROES"
+    },
+    {
+        "sector_id": 1010101039,
+        "sector": "MATA HAMBRE"
+    },
+    {
+        "sector_id": 1010101040,
+        "sector": "CIUDAD UNIVERSITARIA"
+    },
+    {
+        "sector_id": 1010101041,
+        "sector": "LA ESPERILLA"
+    },
+    {
+        "sector_id": 1010101042,
+        "sector": "ENSANCHE NACO"
+    },
+    {
+        "sector_id": 1010101043,
+        "sector": "CENTRO OLIMPICO"
+    },
+    {
+        "sector_id": 1010101044,
+        "sector": "ENSANCHE LA FE"
+    },
+    {
+        "sector_id": 1010101045,
+        "sector": "LA AGUSTINA"
+    },
+    {
+        "sector_id": 1010101046,
+        "sector": "CRISTO REY"
+    },
+    {
+        "sector_id": 1010101047,
+        "sector": "JARDIN ZOOLOGICO"
+    },
+    {
+        "sector_id": 1010101048,
+        "sector": "LA ZURZA"
+    },
+    {
+        "sector_id": 1010101049,
+        "sector": "VILLA AGRICOLAS"
+    },
+    {
+        "sector_id": 1010101050,
+        "sector": "VILLA JUANA"
+    },
+    {
+        "sector_id": 1010101051,
+        "sector": "MIRAFLORES"
+    },
+    {
+        "sector_id": 1010101052,
+        "sector": "SAN JUAN BOSCO"
+    },
+    {
+        "sector_id": 1010101053,
+        "sector": "GAZCUE"
+    },
+    {
+        "sector_id": 1010101054,
+        "sector": "CIUDAD NUEVA"
+    },
+    {
+        "sector_id": 1010101055,
+        "sector": "SAN CARLOS"
+    },
+    {
+        "sector_id": 1010101056,
+        "sector": "VILLA CONSUELO"
+    },
+    {
+        "sector_id": 1010101057,
+        "sector": "ENSANCHE LUPERON"
+    },
+    {
+        "sector_id": 1010101058,
+        "sector": "ENSANCHE CAPOTILLO"
+    },
+    {
+        "sector_id": 1010101059,
+        "sector": "SIMON BOLIVAR"
+    },
+    {
+        "sector_id": 1010101060,
+        "sector": "24 DE ABRIL"
+    },
+    {
+        "sector_id": 1010101061,
+        "sector": "ENSANCHE ESPAILLAT"
+    },
+    {
+        "sector_id": 1010101062,
+        "sector": "MARIA AUXILIADORA"
+    },
+    {
+        "sector_id": 1010101063,
+        "sector": "MEJORAMIENTO SOCIAL"
+    },
+    {
+        "sector_id": 1010101064,
+        "sector": "VILLA FRANCISCA"
+    },
+    {
+        "sector_id": 1010101065,
+        "sector": "ZONA COLONIAL"
+    },
+    {
+        "sector_id": 1010101066,
+        "sector": "DOMINGO SAVIO"
+    },
+    {
+        "sector_id": 1010101067,
+        "sector": "GUALEY"
+    },
+    {
+        "sector_id": 1010101068,
+        "sector": "LA ISABELA"
+    },
+    {
+        "sector_id": 1010101069,
+        "sector": "LA HONDONADA"
+    },
+    {
+        "sector_id": 1010101070,
+        "sector": "SAN DIEGO"
+    },
+    {
+        "sector_id": 32010101001,
+        "sector": "VILLA DUARTE"
+    },
+    {
+        "sector_id": 32010101002,
+        "sector": "ENSANCHE OZAMA"
+    },
+    {
+        "sector_id": 32010101003,
+        "sector": "LOS MINA NORTE"
+    },
+    {
+        "sector_id": 32010101004,
+        "sector": "LOS MINA SUR"
+    },
+    {
+        "sector_id": 32010101005,
+        "sector": "ALMA ROSA"
+    },
+    {
+        "sector_id": 32010101006,
+        "sector": "LAS AMERICAS"
+    },
+    {
+        "sector_id": 32010101007,
+        "sector": "SANS SOUCI"
+    },
+    {
+        "sector_id": 32010101008,
+        "sector": "LOS TRES BRAZOS-JARDINES DEL OZAMA"
+    },
+    {
+        "sector_id": 32010101009,
+        "sector": "FARO A COLON"
+    },
+    {
+        "sector_id": 32010101010,
+        "sector": "LOS MAMEYES"
+    },
+    {
+        "sector_id": 32010101011,
+        "sector": "ISABELITA"
+    },
+    {
+        "sector_id": 32010101012,
+        "sector": "LOS TRES OJOS"
+    },
+    {
+        "sector_id": 32010101013,
+        "sector": "VILLA FARO"
+    },
+    {
+        "sector_id": 32010101014,
+        "sector": "MENDOZA"
+    },
+    {
+        "sector_id": 32010101015,
+        "sector": "CANCINO"
+    },
+    {
+        "sector_id": 32010101016,
+        "sector": "LOS TRINITARIOS"
+    },
+    {
+        "sector_id": 32010101017,
+        "sector": "EL CACHON DE LA RUBIA"
+    },
+    {
+        "sector_id": 32010101018,
+        "sector": "CANCINO AFUERA"
+    },
+    {
+        "sector_id": 32010101019,
+        "sector": "CANCINO ADENTRO"
+    },
+    {
+        "sector_id": 32010101020,
+        "sector": "EL TAMARINDO"
+    },
+    {
+        "sector_id": 32010101021,
+        "sector": "SAN JOSE DE MENDOZA"
+    },
+    {
+        "sector_id": 32010101022,
+        "sector": "PRADO ORIENTAL"
+    },
+    {
+        "sector_id": 32010101023,
+        "sector": "BRISA ORIENTAL"
+    },
+    {
+        "sector_id": 32010101024,
+        "sector": "JUAN LOPEZ"
+    },
+    {
+        "sector_id": 32010101025,
+        "sector": "HAINAMOSA"
+    },
+    {
+        "sector_id": 32010101026,
+        "sector": "EL ALMIRANTE"
+    },
+    {
+        "sector_id": 32010101027,
+        "sector": "LOS FRAILES"
+    },
+    {
+        "sector_id": 32010101028,
+        "sector": "LAS CANAS"
+    },
+    {
+        "sector_id": 32010102001,
+        "sector": "CANCINO ADENTRO"
+    },
+    {
+        "sector_id": 32010102002,
+        "sector": "EL CUATRO"
+    },
+    {
+        "sector_id": 32010103001,
+        "sector": "LOS PAREDONES"
+    },
+    {
+        "sector_id": 32010103002,
+        "sector": "SAN MIGUEL"
+    },
+    {
+        "sector_id": 32010103003,
+        "sector": "LA GREA"
+    },
+    {
+        "sector_id": 32010103004,
+        "sector": "EL VALIENTE"
+    },
+    {
+        "sector_id": 32010103005,
+        "sector": "LA UREÑA"
+    },
+    {
+        "sector_id": 32010201001,
+        "sector": "SAN LUIS"
+    },
+    {
+        "sector_id": 32010202001,
+        "sector": "EL BONITO"
+    },
+    {
+        "sector_id": 32010202002,
+        "sector": "SAN ISIDRO ADENTRO"
+    },
+    {
+        "sector_id": 32010202003,
+        "sector": "SAN ISIDRO AFUERA"
+    },
+    {
+        "sector_id": 32010203001,
+        "sector": "BATEY EL NARANJO"
+    },
+    {
+        "sector_id": 32010203002,
+        "sector": "EL PUENTE"
+    },
+    {
+        "sector_id": 32010203003,
+        "sector": "EL CABRETO"
+    },
+    {
+        "sector_id": 32010204001,
+        "sector": "EL MUELLE"
+    },
+    {
+        "sector_id": 32010204002,
+        "sector": "PIRAGUA"
+    },
+    {
+        "sector_id": 32020101001,
+        "sector": "SANTO DOMINGO COUNTRY CLUB"
+    },
+    {
+        "sector_id": 32020101002,
+        "sector": "LA ALTAGRACIA"
+    },
+    {
+        "sector_id": 32020101003,
+        "sector": "ENGOMBE"
+    },
+    {
+        "sector_id": 32020101004,
+        "sector": "LA ROSA"
+    },
+    {
+        "sector_id": 32020101005,
+        "sector": "LAS CAOBAS"
+    },
+    {
+        "sector_id": 32020101006,
+        "sector": "ALAMEDA"
+    },
+    {
+        "sector_id": 32020101007,
+        "sector": "ENRIQUILLO"
+    },
+    {
+        "sector_id": 32020101008,
+        "sector": "BUENOS AIRES DE HERRERA"
+    },
+    {
+        "sector_id": 32020101009,
+        "sector": "HERRERA"
+    },
+    {
+        "sector_id": 32020101010,
+        "sector": "ZONA INDUSTRIAL HERRERA"
+    },
+    {
+        "sector_id": 32020101011,
+        "sector": "JUAN PABLO DUARTE"
+    },
+    {
+        "sector_id": 32020101012,
+        "sector": "COSTA VERDE"
+    },
+    {
+        "sector_id": 32020101013,
+        "sector": "SAN MIGUEL"
+    },
+    {
+        "sector_id": 32020101014,
+        "sector": "BAYONA"
+    },
+    {
+        "sector_id": 32020101015,
+        "sector": "MANOGUAYABO"
+    },
+    {
+        "sector_id": 32020101016,
+        "sector": "FINCA DE ENGOMBE"
+    },
+    {
+        "sector_id": 32020102001,
+        "sector": "LA CIENAGA"
+    },
+    {
+        "sector_id": 32020102002,
+        "sector": "CABALLONA"
+    },
+    {
+        "sector_id": 32020102003,
+        "sector": "PALAVE"
+    },
+    {
+        "sector_id": 32020102004,
+        "sector": "BUENAS NOCHES"
+    },
+    {
+        "sector_id": 32020102005,
+        "sector": "HATO NUEVO"
+    },
+    {
+        "sector_id": 32020102006,
+        "sector": "BIENVENIDO"
+    },
+    {
+        "sector_id": 32030101001,
+        "sector": "VILLA MELLA"
+    },
+    {
+        "sector_id": 32030101002,
+        "sector": "SANTA CRUZ"
+    },
+    {
+        "sector_id": 32030101003,
+        "sector": "SABANA PERDIDA"
+    },
+    {
+        "sector_id": 32030101004,
+        "sector": "EL EDEN"
+    },
+    {
+        "sector_id": 32030101005,
+        "sector": "GUARICANO"
+    },
+    {
+        "sector_id": 32030101006,
+        "sector": "SAN FELIPE"
+    },
+    {
+        "sector_id": 32030102001,
+        "sector": "LICEY"
+    },
+    {
+        "sector_id": 32030102002,
+        "sector": "MANCEBO"
+    },
+    {
+        "sector_id": 32030102003,
+        "sector": "MATA GORDA"
+    },
+    {
+        "sector_id": 32030102004,
+        "sector": "MATA SAN JUAN"
+    },
+    {
+        "sector_id": 32030102005,
+        "sector": "LIMONAL"
+    },
+    {
+        "sector_id": 32030102006,
+        "sector": "PUNTA"
+    },
+    {
+        "sector_id": 32030102007,
+        "sector": "CERCADILLO"
+    },
+    {
+        "sector_id": 32030103001,
+        "sector": "SIERRA PRIETA"
+    },
+    {
+        "sector_id": 32030103002,
+        "sector": "LOS VIZCAINO"
+    },
+    {
+        "sector_id": 32030103003,
+        "sector": "BUENOS AIRES"
+    },
+    {
+        "sector_id": 32030103004,
+        "sector": "HOYOS OSCUROS"
+    },
+    {
+        "sector_id": 32030103005,
+        "sector": "KILOMETRO 26"
+    },
+    {
+        "sector_id": 32030103006,
+        "sector": "JUBILEO"
+    },
+    {
+        "sector_id": 32030103007,
+        "sector": "JUAN DINGA"
+    },
+    {
+        "sector_id": 32030104001,
+        "sector": "DUQUESA"
+    },
+    {
+        "sector_id": 32030104002,
+        "sector": "LA JACAGUA"
+    },
+    {
+        "sector_id": 32030104003,
+        "sector": "LOS CAZABES"
+    },
+    {
+        "sector_id": 32030105001,
+        "sector": "HIGUERO ABAJO"
+    },
+    {
+        "sector_id": 32030105002,
+        "sector": "CAJUILITO"
+    },
+    {
+        "sector_id": 32030105003,
+        "sector": "LA SABANA DEL HATO"
+    },
+    {
+        "sector_id": 32030105004,
+        "sector": "LA GINA"
+    },
+    {
+        "sector_id": 32030105005,
+        "sector": "LOS LLANOS"
+    },
+    {
+        "sector_id": 32030105006,
+        "sector": "RINCON YACO"
+    },
+    {
+        "sector_id": 32030106001,
+        "sector": "LA JAGUA"
+    },
+    {
+        "sector_id": 32030106002,
+        "sector": "LOMA DE MATEO"
+    },
+    {
+        "sector_id": 32030106003,
+        "sector": "LA JOYA O LOS GOYA"
+    },
+    {
+        "sector_id": 32030106004,
+        "sector": "LOS CALLEJONES"
+    },
+    {
+        "sector_id": 32030106005,
+        "sector": "LOS MAMEYES"
+    },
+    {
+        "sector_id": 32030106006,
+        "sector": "AMOR A DIOS"
+    },
+    {
+        "sector_id": 32030106007,
+        "sector": "LOS COCOS"
+    },
+    {
+        "sector_id": 32030106008,
+        "sector": "LOS PERALEJOS"
+    },
+    {
+        "sector_id": 32030106009,
+        "sector": "RINCON"
+    },
+    {
+        "sector_id": 32030201001,
+        "sector": "LA VICTORIA"
+    },
+    {
+        "sector_id": 32030202001,
+        "sector": "MAL NOMBRE"
+    },
+    {
+        "sector_id": 32030202002,
+        "sector": "PUNTA LARGA"
+    },
+    {
+        "sector_id": 32030202003,
+        "sector": "MARICAO"
+    },
+    {
+        "sector_id": 32030202004,
+        "sector": "EL DAJAO"
+    },
+    {
+        "sector_id": 32030202005,
+        "sector": "LA CAOBA"
+    },
+    {
+        "sector_id": 32030202006,
+        "sector": "PALMILLA"
+    },
+    {
+        "sector_id": 32030202007,
+        "sector": "PRIMAVERA"
+    },
+    {
+        "sector_id": 32030202008,
+        "sector": "EL COROZO"
+    },
+    {
+        "sector_id": 32030202009,
+        "sector": "JUAN TOMAS"
+    },
+    {
+        "sector_id": 32030202010,
+        "sector": "EL JOBO"
+    },
+    {
+        "sector_id": 32030203001,
+        "sector": "LA VIRGEN"
+    },
+    {
+        "sector_id": 32030203002,
+        "sector": "SAN JOAQUIN"
+    },
+    {
+        "sector_id": 32030203003,
+        "sector": "VERDEM"
+    },
+    {
+        "sector_id": 32030203004,
+        "sector": "FERREGES"
+    },
+    {
+        "sector_id": 32030203005,
+        "sector": "LA CULATA"
+    },
+    {
+        "sector_id": 32030204001,
+        "sector": "MATA MAMON"
+    },
+    {
+        "sector_id": 32030204002,
+        "sector": "SAN MATEO"
+    },
+    {
+        "sector_id": 32030204003,
+        "sector": "LA GUABINA"
+    },
+    {
+        "sector_id": 32030204004,
+        "sector": "LOS TAPIA (EL OCHO)"
+    },
+    {
+        "sector_id": 32030204005,
+        "sector": "LOS POTRAZOS"
+    },
+    {
+        "sector_id": 32030204006,
+        "sector": "RINCON DORADO"
+    },
+    {
+        "sector_id": 32030204007,
+        "sector": "LOS ROSARIO"
+    },
+    {
+        "sector_id": 32030204008,
+        "sector": "LOS GENARO"
+    },
+    {
+        "sector_id": 32030204009,
+        "sector": "EL SIETE"
+    },
+    {
+        "sector_id": 32030204010,
+        "sector": "CABON"
+    },
+    {
+        "sector_id": 32030204011,
+        "sector": "SANTANA"
+    },
+    {
+        "sector_id": 32030204012,
+        "sector": "AGUACATE ADENTRO"
+    },
+    {
+        "sector_id": 32030204013,
+        "sector": "EL HIGUERITO"
+    },
+    {
+        "sector_id": 32030204014,
+        "sector": "EL OCHO"
+    },
+    {
+        "sector_id": 32030205001,
+        "sector": "LA BOMBA"
+    },
+    {
+        "sector_id": 32030205002,
+        "sector": "GUAYABO"
+    },
+    {
+        "sector_id": 32030206001,
+        "sector": "BATEY GUANUMA"
+    },
+    {
+        "sector_id": 32030206002,
+        "sector": "MATA REDONDA"
+    },
+    {
+        "sector_id": 32030206003,
+        "sector": "LA GINA (LA TITA)"
+    },
+    {
+        "sector_id": 32030206004,
+        "sector": "EL HATO DE SANGUINEO"
+    },
+    {
+        "sector_id": 32030207001,
+        "sector": "HACIENDA ESTRELLA"
+    },
+    {
+        "sector_id": 32030207002,
+        "sector": "EL 11 DE HACIENDA ESTRELLA"
+    },
+    {
+        "sector_id": 32030207003,
+        "sector": "SAN MATEO"
+    },
+    {
+        "sector_id": 32030207004,
+        "sector": "EL 10 DE HACIENDA ESTRELLA"
+    },
+    {
+        "sector_id": 32030207005,
+        "sector": "LA CAMPAÑA"
+    },
+    {
+        "sector_id": 32030207006,
+        "sector": "LOS MORENOS"
+    },
+    {
+        "sector_id": 32030208001,
+        "sector": "LA CEIBA"
+    },
+    {
+        "sector_id": 32030208002,
+        "sector": "LA PIÑA"
+    },
+    {
+        "sector_id": 32030208003,
+        "sector": "LOS CASTILLOS"
+    },
+    {
+        "sector_id": 32030208004,
+        "sector": "LOS MERCEDES"
+    },
+    {
+        "sector_id": 32030208005,
+        "sector": "LOS MAMBRUSES"
+    },
+    {
+        "sector_id": 32030208006,
+        "sector": "LA JAIBA"
+    },
+    {
+        "sector_id": 32030208007,
+        "sector": "RANCHO ARRIBA-CABON"
+    },
+    {
+        "sector_id": 32030208008,
+        "sector": "CRUCE DE GINA"
+    }
+]

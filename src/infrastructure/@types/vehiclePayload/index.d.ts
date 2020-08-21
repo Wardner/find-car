@@ -8,8 +8,12 @@ declare interface VehiclePayload {
   year?: number;
   lostlocation?: string;
   date?: Date;
-  picture?: string[];
+  picture?: {
+    url: string,
+    id: string
+  }[];
   description?: string;
+  sectorid?: number;
   pub_status?: string;
   user?: number;
 }

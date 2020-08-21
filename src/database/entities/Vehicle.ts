@@ -58,9 +58,12 @@ export class Vehicle extends BaseEntity {
   @Column({
     name: 'picture',
     nullable: true,
-    type: 'simple-array'
+    type: 'simple-json'
   })
-  picture: string[]
+  picture: {
+    url: string,
+    id: string
+  }[];
 
   @Column({
     name: 'description'
@@ -73,10 +76,10 @@ export class Vehicle extends BaseEntity {
   })
   pub_status: status;
 
-  // @Column({
-  //   name: 'sector'
-  // })
-  // sectorid: number;
+  @Column({
+    name: 'sector'
+  })
+  sectorid: number;
 
   @ManyToOne(type => User, user => user.id, {cascade: true, onDelete: 'CASCADE'})
   user: number;

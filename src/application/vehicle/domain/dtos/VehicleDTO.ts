@@ -33,6 +33,9 @@ export class VehicleDTO {
 
   @MapProp()
   description: string;
+  
+  @MapProp()
+  sectorid: number;
 
   @MapProp()
   pub_status: string;
