@@ -25,7 +25,7 @@ export class VehicleController {
     if(vehicles)
         return vehicles;
     
-    throw new Error("Vehiculos no encontrados");
+    throw new Error("Vehiculos no encontrados")
   }
 
   public async getById(id: number) {
