@@ -10,9 +10,12 @@ export class Report extends BaseEntity {
   })
   report_body: string;
 
-  @ManyToOne(type => Vehicle, vehicle => vehicle.report)
-  vehicle: Vehicle;
+  @Column()
+  owner: string;
 
-  @ManyToOne(type => User, user => user.report)
-  user: User;
+  @ManyToOne(type => Vehicle, vehicle => vehicle.id)
+  vehicle: number;
+
+  @ManyToOne(type => User, user => user.id)
+  user: number;
 }
