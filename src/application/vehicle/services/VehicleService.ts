@@ -103,7 +103,7 @@ export class VehicleService {
   public async cloudinaryUp(data: {path: string, name: string}[]) {
     const uploaded = async(path: string) => cloud.upload(path, {
       folder: 'vehicles',
-      width: 200,
+      width: 1080,
       crop: 'limit',
       format: 'jpg'
     });
