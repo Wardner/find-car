@@ -43,13 +43,16 @@ export class VehicleService {
     return deleted;
   }
 
-  public async upload(vehicle: Vehicle, picture: string[]) {
+  public async upload(vehicle: Vehicle, pictures: {path: string, name: string}[]) {
     if(vehicle) {
 
-      const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, { picture })
+      let picture = await this.cloudinaryUp(pictures);
+
+
+      const updatePicture = await this._VehicleRepository.updateVehicle(vehicle, picture)
       if(updatePicture) {
         await this._VehicleRepository.save(updatePicture)
-        // await deleteUploadedFiles(pictures)
+        // await deleteUploadedFiles(picture)
           
         return {
           updatePicture

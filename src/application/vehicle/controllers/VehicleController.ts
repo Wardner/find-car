@@ -52,8 +52,10 @@ export class VehicleController {
       brand: brand?.name
     }
 
+    
     let pictures = await this._VehicleService.cloudinaryUp(data);
     
+    vehicle.lostlocation = stadistic.sector;
     vehicle.picture = pictures;
     let created = await this._VehicleService.create(vehicle as Vehicle);
     
@@ -92,7 +94,7 @@ export class VehicleController {
 
   public async upload(props: {
     id: number,
-    picture: string[]
+    picture: {path: string, name: string}[]
   }) {
     const { id, picture } = props;
     const vehicle = await this._VehicleService.getVehicleById(id);
