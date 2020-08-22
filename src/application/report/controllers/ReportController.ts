@@ -37,7 +37,7 @@ export class ReportController {
         to: user?.email as string,
         subject: UserResponses.EMAIL_SENT,
         template: 'reportedVehicle'
-      }, {url: `https://find-cars.herokuapp.com/`});
+      }, {url: `https://findcars.herokuapp.com/`});
       
       return created;
     }
