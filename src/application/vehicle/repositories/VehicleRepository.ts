@@ -18,8 +18,8 @@ export class VehicleRepository extends Repository<Vehicle> {
   public getById = async (id: number): Promise<Vehicle|undefined> =>
     await this.manager.getRepository(Vehicle)
       .findOne({select: ["id", "brand", "model", "year", "date", "lostlocation",
-      "description", "niv", "color", "pub_status", "plate", "userId", "picture"], 
-    where: {id: `${id}`}, relations: ["brand", "model", "comment"]})
+      "description", "niv", "color", "pub_status", "plate", "userId", "picture", "user"], 
+    where: {id: `${id}`}, relations: ["brand", "model", "comment", "user"]})
 
   public getByIdC = async (id: number) =>
     await this.manager.getRepository(Vehicle)
