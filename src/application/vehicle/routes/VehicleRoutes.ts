@@ -20,7 +20,7 @@ export class VehicleRoutes extends BaseRoutes {
     this.api.post('/create', [ensureAuth, vehiclePictureMiddle], this.createVehicle);
     this.api.get('/getall', this.getAllVehicles);
     this.api.get('/getone/:id', this.getOneVehicle);
-    this.api.put('/update/:id', ensureAuth, this.updateVehicle);
+    this.api.put('/update/:id', [ensureAuth, vehiclePictureMiddle], this.updateVehicle);
     this.api.delete('/delete/:id', ensureAuth, this.deleteVehicle);
     this.api.get('/sector/getall', this.jsonSectors);
     this.api.get('/sector/getone/:id', this.jsonSector);
@@ -91,11 +91,19 @@ export class VehicleRoutes extends BaseRoutes {
       resolve: async() => {
         let id = Number(req.params.id);
         if(req.body.userId = req.user.id){
-          const updated = await this._VehicleController.update(id, req.body);
-          if(updated)
-            return res
-              .status(statusCodes.OK)
-              .send(ResponseHandler.build(updated, false))
+          if(req.files){
+            let files = req.files as any;
+  
+            let pictures = files.map(file => ({
+              path: file.path,
+              name: file.filename
+            }))
+            const updated = await this._VehicleController.update(id, req.body, pictures);
+            if(updated)
+              return res
+                .status(statusCodes.OK)
+                .send(ResponseHandler.build(updated, false))
+          }
         } else {
           return res
             .status(statusCodes.UNAUTHORIZED)

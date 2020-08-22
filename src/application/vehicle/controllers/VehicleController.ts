@@ -72,10 +72,14 @@ export class VehicleController {
     throw new Error("No se creo el vehiculo");
   }
 
-  public async update (id: number, updates: {}) {
+  public async update (id: number, updates: {}, data: {path: string, name: string}[]) {
     const vehicle = await this._VehicleService.getVehicleByIdC(id);
     if(vehicle){
       let updated = await this._VehicleService.update(vehicle, updates);
+      if(data){
+        let newupdated = await this._VehicleService.uploadC(updated, data);
+        return await this._VehicleService.getVehicleById(newupdated.id);
+      }
       return await this._VehicleService.getVehicleById(updated.id);
     }
 
