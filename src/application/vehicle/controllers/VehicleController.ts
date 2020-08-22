@@ -86,6 +86,16 @@ export class VehicleController {
     throw new Error("Vehiculo no encontrado");
   }
 
+  public async updateS (id: number, updates: {}) {
+    const vehicle = await this._VehicleService.getVehicleByIdC(id);
+    if(vehicle){
+      let updated = await this._VehicleService.update(vehicle, updates);
+      return await this._VehicleService.getVehicleById(updated.id);
+    }
+
+    throw new Error("Vehiculo no encontrado");
+  }
+
   public async delete (id: number) {
     const vehicle = await this._VehicleService.getVehicleById(id);
     if(vehicle){

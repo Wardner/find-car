@@ -103,6 +103,12 @@ export class VehicleRoutes extends BaseRoutes {
               return res
                 .status(statusCodes.OK)
                 .send(ResponseHandler.build(updated, false))
+          } else {
+            const updated = await this._VehicleController.updateS(id, req.body);
+            if(updated)
+              return res
+                .status(statusCodes.OK)
+                .send(ResponseHandler.build(updated, false))
           }
         } else {
           return res
