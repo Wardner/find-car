@@ -13,9 +13,9 @@ export class Report extends BaseEntity {
   @Column()
   owner: string;
 
-  @ManyToOne(type => Vehicle, vehicle => vehicle.id)
+  @ManyToOne(type => Vehicle, vehicle => vehicle.id, {cascade: true, onDelete: 'CASCADE'})
   vehicle: number;
 
-  @ManyToOne(type => User, user => user.id)
+  @ManyToOne(type => User, user => user.id, {cascade: true, onDelete: 'CASCADE'})
   user: number;
 }
